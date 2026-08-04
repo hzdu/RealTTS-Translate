@@ -82,17 +82,31 @@
     @keyframes shine { 0%,65%{transform:translateX(-120%)}100%{transform:translateX(120%)} }
     .feature-card img { transition:transform .8s cubic-bezier(.2,.7,.2,1), filter .5s; }
     .feature-card:hover img { transform:scale(1.035); filter:saturate(1.08); }
-    .product-shot { position:relative; min-height:360px; overflow:hidden; isolation:isolate; background:radial-gradient(circle at 50% 12%,rgba(41,151,255,.2),transparent 42%),linear-gradient(155deg,#eaf5ff 0%,#d8eaff 45%,#c5def8 100%); border-top:1px solid rgba(0,113,227,.12); }
-    .product-shot::before { content:""; position:absolute; inset:0; z-index:-1; background-image:linear-gradient(rgba(255,255,255,.26) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.22) 1px,transparent 1px); background-size:24px 24px; mask-image:linear-gradient(to bottom,rgba(0,0,0,.75),transparent 82%); }
-    .product-shot::after { content:""; position:absolute; inset:auto 0 0; height:34%; background:linear-gradient(to top,rgba(7,20,38,.12),transparent); pointer-events:none; }
-    .product-shot-frame { position:absolute; left:6%; right:6%; top:50%; overflow:hidden; border:1px solid rgba(255,255,255,.88); border-radius:12px; background:#fff; box-shadow:0 28px 65px rgba(7,43,82,.24),0 8px 22px rgba(0,113,227,.14),inset 0 0 0 1px rgba(7,20,38,.05); transform:translateY(-50%) perspective(1100px) rotateX(1.5deg); transition:transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .7s ease; }
-    .product-shot-frame::before { content:""; position:absolute; inset:0; z-index:2; background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.42) 42%,transparent 60%); transform:translateX(-120%); transition:transform .85s ease; pointer-events:none; }
-    .feature-card:hover .product-shot-frame { transform:translateY(-52%) perspective(1100px) rotateX(0) scale(1.018); box-shadow:0 34px 78px rgba(7,43,82,.29),0 12px 28px rgba(0,113,227,.18); }
-    .feature-card:hover .product-shot-frame::before { transform:translateX(120%); }
-    .product-shot-frame img { display:block; width:100%; height:auto; object-fit:contain; filter:contrast(1.03) saturate(.92); }
-    .feature-card:hover .product-shot-frame img { transform:none; filter:contrast(1.045) saturate(1); }
-    .product-shot-badge { position:absolute; left:8%; bottom:22px; z-index:3; display:flex; align-items:center; gap:7px; border:1px solid rgba(255,255,255,.75); border-radius:999px; background:rgba(7,20,38,.78); padding:7px 11px; color:#fff; font-size:11px; font-weight:600; letter-spacing:.01em; box-shadow:0 8px 22px rgba(7,20,38,.2); backdrop-filter:blur(12px); }
-    .product-shot-badge::before { content:""; width:6px; height:6px; border-radius:50%; background:#2997ff; box-shadow:0 0 0 4px rgba(41,151,255,.16); }
+    .feature-card-product { position:relative; isolation:isolate; background:#071426; color:#fff; box-shadow:3px 5px 30px rgba(0,0,0,.2); transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease; }
+    .feature-card-product::before { content:""; position:absolute; inset:0 0 auto; z-index:3; height:2px; background:linear-gradient(90deg,transparent 4%,#2997ff 28%,#0071e3 72%,transparent 96%); opacity:.82; }
+    .feature-card-product:hover { transform:translateY(-4px); box-shadow:3px 12px 38px rgba(7,20,38,.28); }
+    .feature-card-copy { position:relative; min-height:220px; }
+    .feature-card-copy::after { content:""; position:absolute; left:3rem; right:3rem; bottom:0; height:1px; background:rgba(255,255,255,.09); }
+    .feature-card-icon { display:grid; width:48px; height:48px; flex:none; place-items:center; border-radius:12px; background:#0f2948; color:#2997ff; box-shadow:inset 0 1px 0 rgba(255,255,255,.12); }
+    .product-shot { position:relative; min-height:390px; overflow:hidden; isolation:isolate; background:#0b1f38; }
+    .product-shot::before { content:""; position:absolute; left:12%; right:12%; top:17%; height:58%; z-index:-1; border-radius:50%; background:rgba(41,151,255,.18); filter:blur(62px); }
+    .product-shot::after { content:""; position:absolute; inset:auto 0 0; height:36%; background:linear-gradient(to top,rgba(7,20,38,.9),transparent); pointer-events:none; }
+    .product-shot-brandbar { position:absolute; left:7%; right:7%; top:18px; z-index:4; display:flex; align-items:center; gap:8px; color:rgba(255,255,255,.48); font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+    .product-shot-brandmark { width:18px; height:18px; border:1px solid rgba(41,151,255,.52); border-radius:5px; background:#071426 url("assets/app.png") center/14px 14px no-repeat; box-shadow:inset 0 1px 0 rgba(255,255,255,.12); }
+    .product-shot-state { display:flex; align-items:center; gap:6px; margin-left:auto; letter-spacing:.05em; color:rgba(255,255,255,.68); }
+    .product-shot-state i { width:5px; height:5px; border-radius:50%; background:#2997ff; box-shadow:0 0 0 4px rgba(41,151,255,.1); }
+    .product-shot-signal { position:absolute; right:7%; bottom:22px; z-index:3; display:flex; height:22px; align-items:center; gap:3px; color:#2997ff; opacity:.68; }
+    .product-shot-signal i { display:block; width:2px; border-radius:99px; background:currentColor; animation:wave 1.25s ease-in-out infinite; }
+    .product-shot-signal i:nth-child(1),.product-shot-signal i:nth-child(9){height:5px}.product-shot-signal i:nth-child(2),.product-shot-signal i:nth-child(8){height:9px}.product-shot-signal i:nth-child(3),.product-shot-signal i:nth-child(7){height:14px}.product-shot-signal i:nth-child(4),.product-shot-signal i:nth-child(6){height:19px}.product-shot-signal i:nth-child(5){height:22px}
+    .product-shot-signal i:nth-child(2){animation-delay:.07s}.product-shot-signal i:nth-child(3){animation-delay:.14s}.product-shot-signal i:nth-child(4){animation-delay:.21s}.product-shot-signal i:nth-child(5){animation-delay:.28s}.product-shot-signal i:nth-child(6){animation-delay:.35s}.product-shot-signal i:nth-child(7){animation-delay:.42s}.product-shot-signal i:nth-child(8){animation-delay:.49s}.product-shot-signal i:nth-child(9){animation-delay:.56s}
+    .product-shot-frame { position:absolute; left:7%; right:7%; top:53%; overflow:hidden; border-radius:12px; background:#fff; box-shadow:3px 5px 30px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.2); transform:translateY(-50%) perspective(1100px) rotateX(1.2deg); transition:transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .7s ease; }
+    .product-shot-frame::before { content:""; position:absolute; inset:0; z-index:2; background:linear-gradient(110deg,transparent 24%,rgba(255,255,255,.34) 43%,transparent 59%); transform:translateX(-125%); transition:transform .9s ease; pointer-events:none; }
+    .feature-card:hover .product-shot-frame { transform:translateY(-52%) perspective(1100px) rotateX(0) scale(1.012); box-shadow:3px 10px 38px rgba(0,0,0,.46),0 0 0 1px rgba(41,151,255,.25); }
+    .feature-card:hover .product-shot-frame::before { transform:translateX(125%); }
+    .product-shot-frame img { display:block; width:100%; height:auto; object-fit:contain; filter:contrast(1.025) saturate(.92); }
+    .feature-card:hover .product-shot-frame img { transform:none; filter:contrast(1.04) saturate(1); }
+    .product-shot-badge { position:absolute; left:7%; bottom:22px; z-index:3; display:flex; align-items:center; gap:7px; border-radius:999px; background:rgba(16,43,73,.9); padding:7px 11px; color:#fff; font-size:11px; font-weight:600; letter-spacing:.01em; box-shadow:inset 0 1px 0 rgba(255,255,255,.12); backdrop-filter:blur(12px); }
+    .product-shot-badge::before { content:""; width:6px; height:6px; border-radius:50%; background:#2997ff; box-shadow:0 0 0 4px rgba(41,151,255,.12); }
     .video-play-layer { position:absolute; inset:0; z-index:4; display:grid; place-items:center; border:0; background:radial-gradient(circle at center,rgba(7,20,38,.08),rgba(7,20,38,.36)); color:#fff; cursor:pointer; opacity:1; transition:opacity .32s ease,background .32s ease; }
     .video-play-layer.is-hidden { opacity:0; pointer-events:none; }
     .video-play-button { position:relative; display:grid; width:94px; height:94px; place-items:center; border:1px solid rgba(255,255,255,.62); border-radius:50%; background:linear-gradient(145deg,rgba(16,43,73,.9),rgba(7,20,38,.78)); box-shadow:0 22px 52px rgba(0,0,0,.34),0 0 0 9px rgba(41,151,255,.12),0 0 44px rgba(41,151,255,.36),inset 0 1px 0 rgba(255,255,255,.34); backdrop-filter:blur(18px) saturate(145%); transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,border-color .28s ease; }
@@ -122,6 +136,34 @@
     .mobile-menu.open { opacity:1; pointer-events:auto; transform:none; }
     .scroll-progress { transform-origin:left; transform:scaleX(0); }
     .counter { font-variant-numeric:tabular-nums; }
+    .experience-section { --parallax-y:0px; position:relative; isolation:isolate; overflow:hidden; background:#f5f5f7; }
+    .experience-section::before { content:""; position:absolute; left:-8%; top:24%; z-index:-2; width:36vw; height:36vw; min-width:360px; min-height:360px; border-radius:50%; background:radial-gradient(circle,rgba(41,151,255,.16),rgba(41,151,255,0) 68%); filter:blur(8px); transform:translate3d(0,var(--parallax-y),0); will-change:transform; }
+    .experience-section::after { content:""; position:absolute; right:-12%; bottom:4%; z-index:-2; width:48vw; height:48vw; min-width:480px; min-height:480px; border:1px solid rgba(0,113,227,.1); border-radius:50%; box-shadow:inset 0 0 0 64px rgba(255,255,255,.22),inset 0 0 0 65px rgba(0,113,227,.05); transform:translate3d(0,calc(var(--parallax-y) * -.7),0); will-change:transform; }
+    .stats-panel { position:relative; isolation:isolate; }
+    .stats-panel::before { content:"REALTTS / LIVE TRANSLATION CORE"; position:absolute; left:2px; top:18px; z-index:2; color:rgba(7,20,38,.42); font-size:9px; font-weight:600; letter-spacing:.16em; }
+    .stats-panel::after { content:""; position:absolute; left:0; right:0; top:37px; height:1px; background:linear-gradient(90deg,rgba(0,113,227,.4),rgba(0,113,227,.06) 72%,transparent); }
+    .stats-card { position:relative; min-height:270px; overflow:hidden; border-radius:12px; background:rgba(255,255,255,.92); box-shadow:3px 5px 30px rgba(7,20,38,.1),inset 0 1px 0 #fff; backdrop-filter:blur(18px) saturate(125%); transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease,background .4s ease; }
+    .stats-card:hover { background:#fff; transform:translateY(-8px); box-shadow:3px 16px 38px rgba(7,20,38,.15),inset 0 1px 0 #fff; }
+    .stats-card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,#2997ff,#0071e3 58%,rgba(0,113,227,0)); }
+    .stats-card::after { content:""; position:absolute; right:-58px; bottom:-72px; width:190px; height:190px; border-radius:50%; background:radial-gradient(circle,rgba(41,151,255,.13),transparent 70%); pointer-events:none; }
+    .stats-icon { display:grid; width:44px; height:44px; place-items:center; border-radius:11px; background:#071426; color:#2997ff; box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 8px 22px rgba(7,20,38,.16); }
+    .stats-number { color:#071426; font-size:clamp(3.25rem,5vw,4.5rem); line-height:.95; letter-spacing:-.05em; }
+    .stats-label { color:#1d1d1f; }
+    .stats-body { color:rgba(7,20,38,.52); }
+    .stats-signal { position:absolute; right:2px; top:11px; display:flex; height:24px; align-items:center; gap:3px; color:#0071e3; opacity:.72; }
+    .stats-signal i { display:block; width:2px; border-radius:99px; background:currentColor; animation:wave 1.3s ease-in-out infinite; }
+    .stats-signal i:nth-child(1),.stats-signal i:nth-child(9){height:5px}.stats-signal i:nth-child(2),.stats-signal i:nth-child(8){height:9px}.stats-signal i:nth-child(3),.stats-signal i:nth-child(7){height:14px}.stats-signal i:nth-child(4),.stats-signal i:nth-child(6){height:19px}.stats-signal i:nth-child(5){height:24px}
+    .stats-signal i:nth-child(2){animation-delay:.08s}.stats-signal i:nth-child(3){animation-delay:.16s}.stats-signal i:nth-child(4){animation-delay:.24s}.stats-signal i:nth-child(5){animation-delay:.32s}.stats-signal i:nth-child(6){animation-delay:.4s}.stats-signal i:nth-child(7){animation-delay:.48s}.stats-signal i:nth-child(8){animation-delay:.56s}.stats-signal i:nth-child(9){animation-delay:.64s}
+    .stats-meter { position:absolute; left:28px; right:28px; bottom:26px; height:2px; overflow:hidden; background:rgba(7,20,38,.09); }
+    .stats-meter span { display:block; width:72%; height:100%; background:linear-gradient(90deg,#0071e3,#2997ff); box-shadow:0 0 10px rgba(41,151,255,.42); }
+    .stats-card:nth-child(2) .stats-meter span { width:88%; }
+    .stats-card:nth-child(3) .stats-meter span { width:62%; }
+    .stats-status { position:absolute; left:28px; bottom:34px; color:rgba(7,20,38,.36); font-size:9px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; }
+    [dir="rtl"] .stats-panel::before { left:auto; right:2px; }
+    [dir="rtl"] .stats-card::before { left:auto; right:0; }
+    [dir="rtl"] .stats-card::after { left:-58px; right:auto; }
+    [dir="rtl"] .stats-signal { left:2px; right:auto; }
+    [dir="rtl"] .stats-status { left:auto; right:28px; }
     .brand-night { background-color:var(--brand-night); background-image:radial-gradient(circle at 18% 12%,rgba(41,151,255,.22),transparent 34%),radial-gradient(circle at 88% 72%,rgba(0,113,227,.14),transparent 32%),linear-gradient(145deg,#071426 0%,#0a1b31 55%,#071426 100%); }
     .brand-night-soft { background:linear-gradient(145deg,#0b1f38 0%,#071426 100%); }
     .conversion-glow { background-color:var(--brand-night); background-image:radial-gradient(circle at 36% 15%,rgba(41,151,255,.3) 0%,rgba(0,82,174,.14) 28%,rgba(7,20,38,0) 58%),linear-gradient(150deg,#071426 0%,#0b1f38 100%); }
@@ -134,24 +176,31 @@
     .trade-flow-line { position:relative; height:2px; background:linear-gradient(90deg,#d2d2d7 0 44%,#0071e3 56% 100%); }
     .trade-flow-line::after { content:""; position:absolute; right:0; top:50%; width:8px; height:8px; border-right:2px solid #0071e3; border-top:2px solid #0071e3; transform:translateY(-50%) rotate(45deg); }
     .trade-language-pair { min-height:48px; }
-    .workflow-section { background-color:#f5f5f7; background-image:radial-gradient(circle at 50% 42%,rgba(41,151,255,.11),rgba(245,245,247,0) 38%); }
-    .workflow-stage { position:relative; isolation:isolate; }
-    .workflow-stage::before { content:""; position:absolute; left:11%; right:11%; top:53px; height:1px; background:linear-gradient(90deg,rgba(0,113,227,.1),rgba(0,113,227,.55),rgba(0,113,227,.1)); z-index:-1; }
-    .workflow-card { position:relative; min-height:350px; overflow:hidden; border:1px solid rgba(0,113,227,.1); box-shadow:0 16px 48px rgba(7,20,38,.07); transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease; }
-    .workflow-card:hover { transform:translateY(-6px); border-color:rgba(0,113,227,.25); box-shadow:0 24px 64px rgba(7,20,38,.12); }
-    .workflow-card::after { content:""; position:absolute; right:-54px; bottom:-68px; width:180px; height:180px; border-radius:50%; background:radial-gradient(circle,rgba(41,151,255,.14),rgba(41,151,255,0) 70%); pointer-events:none; }
-    .workflow-step { display:flex; align-items:center; justify-content:space-between; }
-    .workflow-number { font-variant-numeric:tabular-nums; color:rgba(0,113,227,.2); }
-    .workflow-icon { display:grid; place-items:center; width:54px; height:54px; border-radius:50%; background:#0071e3; color:#fff; box-shadow:0 10px 28px rgba(0,113,227,.27); }
-    .workflow-mini { margin-top:28px; border-radius:10px; background:#f5f5f7; padding:14px; }
-    .workflow-device { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:8px; background:#fff; box-shadow:0 3px 12px rgba(7,20,38,.05); }
+    .workflow-section { background:#f5f5f7; }
+    .workflow-stage { position:relative; isolation:isolate; overflow:hidden; border-radius:12px; background:#071426; box-shadow:3px 5px 30px rgba(0,0,0,.18); }
+    .workflow-stage::before { content:""; position:absolute; left:9%; right:9%; top:76px; z-index:3; height:2px; background:linear-gradient(90deg,rgba(41,151,255,.2),#2997ff 50%,rgba(41,151,255,.2)); box-shadow:0 0 18px rgba(41,151,255,.24); }
+    .workflow-stage::after { content:"REALTIME AUDIO PATH"; position:absolute; left:50%; top:60px; z-index:4; transform:translateX(-50%); background:#071426; padding:0 12px; color:rgba(255,255,255,.38); font-size:9px; font-weight:600; letter-spacing:.16em; white-space:nowrap; }
+    .workflow-card { position:relative; min-height:390px; overflow:hidden; color:#fff; background:transparent; transition:background-color .35s ease; }
+    .workflow-card + .workflow-card { border-left:1px solid rgba(255,255,255,.09); }
+    .workflow-card:hover { background:#0b1f38; }
+    .workflow-card::before { content:""; position:absolute; left:0; right:0; bottom:0; height:2px; background:#2997ff; transform:scaleX(0); transform-origin:left; transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+    .workflow-card:hover::before { transform:scaleX(1); }
+    .workflow-card::after { content:""; position:absolute; left:50%; top:69px; z-index:5; width:16px; height:16px; border:4px solid #071426; border-radius:50%; background:#2997ff; box-shadow:0 0 0 1px rgba(41,151,255,.52),0 0 18px rgba(41,151,255,.48); transform:translateX(-50%); }
+    .workflow-card:hover::after { background:#fff; }
+    .workflow-step { display:flex; align-items:center; justify-content:space-between; min-height:54px; }
+    .workflow-number { font-variant-numeric:tabular-nums; color:rgba(255,255,255,.18); letter-spacing:-.03em; }
+    .workflow-icon { display:grid; place-items:center; width:48px; height:48px; border-radius:12px; background:#0f2948; color:#2997ff; box-shadow:inset 0 1px 0 rgba(255,255,255,.12); }
+    .workflow-copy { padding-top:30px; }
+    .workflow-mini { position:relative; margin-top:28px; border-radius:10px; background:#0b1f38; padding:14px; box-shadow:inset 0 0 0 1px rgba(255,255,255,.08); }
+    .workflow-mini::before { content:"SYSTEM READY"; display:block; margin-bottom:10px; color:rgba(255,255,255,.34); font-size:9px; font-weight:600; letter-spacing:.14em; }
+    .workflow-device { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:8px; background:#102b49; box-shadow:inset 0 1px 0 rgba(255,255,255,.07); }
     .workflow-device + .workflow-device { margin-top:8px; }
     .workflow-language { display:flex; align-items:center; justify-content:space-between; gap:8px; }
-    .workflow-language span { flex:1; border-radius:8px; background:#fff; padding:11px 8px; text-align:center; font-size:13px; font-weight:600; box-shadow:0 3px 12px rgba(7,20,38,.05); }
-    .workflow-live { display:flex; align-items:center; gap:12px; border-radius:8px; background:#fff; padding:12px; box-shadow:0 3px 12px rgba(7,20,38,.05); }
-    .workflow-pulse { width:10px; height:10px; border-radius:50%; background:#34c759; box-shadow:0 0 0 5px rgba(52,199,89,.13); }
+    .workflow-language span { flex:1; border-radius:8px; background:#102b49; padding:11px 8px; text-align:center; font-size:13px; font-weight:600; box-shadow:inset 0 1px 0 rgba(255,255,255,.07); }
+    .workflow-live { display:flex; align-items:center; gap:12px; border-radius:8px; background:#102b49; padding:12px; box-shadow:inset 0 1px 0 rgba(255,255,255,.07); }
+    .workflow-pulse { width:9px; height:9px; border-radius:50%; background:#2997ff; box-shadow:0 0 0 5px rgba(41,151,255,.12); }
     .workflow-bars { display:flex; flex:1; align-items:center; gap:3px; height:24px; }
-    .workflow-bars i { display:block; width:3px; border-radius:99px; background:#0071e3; animation:wave 1s ease-in-out infinite; }
+    .workflow-bars i { display:block; width:3px; border-radius:99px; background:#2997ff; animation:wave 1s ease-in-out infinite; }
     .workflow-bars i:nth-child(1),.workflow-bars i:nth-child(5){height:8px}.workflow-bars i:nth-child(2),.workflow-bars i:nth-child(4){height:16px}.workflow-bars i:nth-child(3){height:23px}
     .workflow-bars i:nth-child(2){animation-delay:.08s}.workflow-bars i:nth-child(3){animation-delay:.16s}.workflow-bars i:nth-child(4){animation-delay:.24s}.workflow-bars i:nth-child(5){animation-delay:.32s}
     [dir="rtl"] body { letter-spacing:0; }
@@ -159,15 +208,34 @@
     [dir="rtl"] .trade-language-pair .fa-arrow-right { transform:scaleX(-1); }
     [dir="rtl"] .trade-flow-line { background:linear-gradient(270deg,#d2d2d7 0 44%,#0071e3 56% 100%); }
     [dir="rtl"] .trade-flow-line::after { left:0; right:auto; transform:translateY(-50%) rotate(-135deg); }
-    [dir="rtl"] .workflow-card::after { left:-54px; right:auto; }
+    [dir="rtl"] .workflow-card + .workflow-card { border-left:0; border-right:1px solid rgba(255,255,255,.09); }
+    [dir="rtl"] .workflow-card::before { transform-origin:right; }
     [dir="rtl"] .workflow-language .fa-arrow-right { transform:scaleX(-1); }
+    [dir="rtl"] .product-shot-state { margin-left:0; margin-right:auto; }
     @media (max-width:767px) {
       .hero-title { font-size:clamp(2.5rem,13.5vw,4.25rem); line-height:1.14; letter-spacing:-.012em; }
-      .workflow-stage::before { display:none; }
-      .workflow-card { min-height:0; }
-      .product-shot { min-height:300px; }
+      .workflow-stage::before { left:35px; right:auto; top:7%; bottom:7%; width:2px; height:auto; background:linear-gradient(180deg,rgba(41,151,255,.2),#2997ff 50%,rgba(41,151,255,.2)); }
+      .workflow-stage::after { left:20px; top:50%; padding:10px 0; transform:translateY(-50%) rotate(-90deg); }
+      .workflow-card { min-height:0; padding-left:4rem !important; }
+      .workflow-card + .workflow-card { border-top:1px solid rgba(255,255,255,.09); border-left:0; }
+      .workflow-card::after { left:34px; top:48px; }
+      [dir="rtl"] .workflow-card { padding-left:1.75rem !important; padding-right:4rem !important; }
+      [dir="rtl"] .workflow-card + .workflow-card { border-right:0; }
+      [dir="rtl"] .workflow-card::after { left:auto; right:26px; transform:translateX(50%); }
+      [dir="rtl"] .workflow-stage::before { left:auto; right:35px; }
+      [dir="rtl"] .workflow-stage::after { left:auto; right:20px; transform:translateY(-50%) rotate(90deg); }
+      .feature-card-copy { min-height:0; }
+      .feature-card-copy::after { left:2rem; right:2rem; }
+      .experience-section::before { left:-180px; top:34%; }
+      .experience-section::after { right:-300px; bottom:6%; }
+      .stats-panel::before { left:2px; }
+      [dir="rtl"] .stats-panel::before { left:auto; right:2px; }
+      .stats-card { min-height:245px; }
+      .product-shot { min-height:330px; }
       .product-shot-frame { left:4%; right:4%; }
+      .product-shot-brandbar { left:6%; right:6%; }
       .product-shot-badge { left:6%; bottom:16px; }
+      .product-shot-signal { right:6%; bottom:18px; }
       .video-play-button { width:76px; height:76px; }
       .video-play-button::after { border-top-width:11px; border-bottom-width:11px; border-left-width:17px; }
       .hero-title .hero-word + .hero-word { margin-top:.1em; }
@@ -333,32 +401,36 @@
       </div>
     </section>
 
-    <section class="bg-[#f5f5f7] py-24 md:py-36" id="experience">
+    <section class="experience-section py-24 md:py-36" id="experience">
       <div class="mx-auto max-w-[1040px] px-5">
         <div class="reveal text-center">
           <p class="mb-4 text-[17px] font-semibold text-[#0066cc]" data-realtts-i18n="instantEyebrow">沟通，不该等待。</p>
           <h2 class="section-title display" data-realtts-i18n="instantTitle">开口即翻译。<br>交流不中断。</h2>
           <p class="mx-auto mt-7 max-w-[720px] text-[19px] leading-relaxed text-black/58 md:text-[23px]" data-realtts-i18n="instantBody">双向语音实时识别、翻译与自然播报。你专注谈判、选品和客户关系，RealTTS 负责语言。</p>
         </div>
-        <div class="reveal mt-16 grid gap-4 md:grid-cols-3">
-          <article class="rounded-xl bg-white p-8 md:p-10">
-            <i class="fa-solid fa-bolt mb-8 text-[30px] text-[#0071e3]"></i>
-            <div class="counter display text-[52px] font-semibold" data-count="1">0</div>
-            <p class="mt-2 text-[17px] font-semibold" data-realtts-i18n="statSpeed">秒级响应</p>
-            <p class="mt-3 text-[15px] leading-relaxed text-black/52" data-realtts-i18n="statSpeedBody">让对话保持自然节奏。</p>
+        <div class="stats-panel reveal mt-16 grid gap-4 pt-14 md:grid-cols-3">
+          <article class="stats-card p-7 pb-16 md:p-8 md:pb-16">
+            <div class="flex items-center justify-between"><span class="stats-icon"><i class="fa-solid fa-bolt text-[18px]"></i></span><span class="text-[10px] font-semibold tracking-[.14em] text-white/30">LATENCY</span></div>
+            <div class="counter stats-number display mt-8 font-semibold" data-count="1">0</div>
+            <p class="stats-label mt-3 text-[17px] font-semibold" data-realtts-i18n="statSpeed">秒级响应</p>
+            <p class="stats-body mt-3 text-[15px] leading-relaxed" data-realtts-i18n="statSpeedBody">让对话保持自然节奏。</p>
+            <span class="stats-status">Signal response</span><span class="stats-meter" aria-hidden="true"><span></span></span>
           </article>
-          <article class="rounded-xl bg-white p-8 md:p-10">
-            <i class="fa-solid fa-language mb-8 text-[30px] text-[#0071e3]"></i>
-            <div class="counter display text-[52px] font-semibold" data-count="13">0</div>
-            <p class="mt-2 text-[17px] font-semibold" data-realtts-i18n="statLang">种常用语言</p>
-            <p class="mt-3 text-[15px] leading-relaxed text-black/52" data-realtts-i18n="statLangBody">覆盖主流跨境贸易市场。</p>
+          <article class="stats-card p-7 pb-16 md:p-8 md:pb-16">
+            <div class="flex items-center justify-between"><span class="stats-icon"><i class="fa-solid fa-language text-[18px]"></i></span><span class="text-[10px] font-semibold tracking-[.14em] text-white/30">LANGUAGE</span></div>
+            <div class="counter stats-number display mt-8 font-semibold" data-count="13">0</div>
+            <p class="stats-label mt-3 text-[17px] font-semibold" data-realtts-i18n="statLang">种常用语言</p>
+            <p class="stats-body mt-3 text-[15px] leading-relaxed" data-realtts-i18n="statLangBody">覆盖主流跨境贸易市场。</p>
+            <span class="stats-status">Global coverage</span><span class="stats-meter" aria-hidden="true"><span></span></span>
           </article>
-          <article class="rounded-xl bg-white p-8 md:p-10">
-            <i class="fa-solid fa-arrows-left-right-to-line mb-8 text-[30px] text-[#0071e3]"></i>
-            <div class="counter display text-[52px] font-semibold" data-count="2">0</div>
-            <p class="mt-2 text-[17px] font-semibold" data-realtts-i18n="statWay">路同步传译</p>
-            <p class="mt-3 text-[15px] leading-relaxed text-black/52" data-realtts-i18n="statWayBody">你与客户都能听懂彼此。</p>
+          <article class="stats-card p-7 pb-16 md:p-8 md:pb-16">
+            <div class="flex items-center justify-between"><span class="stats-icon"><i class="fa-solid fa-arrows-left-right-to-line text-[18px]"></i></span><span class="text-[10px] font-semibold tracking-[.14em] text-white/30">DUPLEX</span></div>
+            <div class="counter stats-number display mt-8 font-semibold" data-count="2">0</div>
+            <p class="stats-label mt-3 text-[17px] font-semibold" data-realtts-i18n="statWay">路同步传译</p>
+            <p class="stats-body mt-3 text-[15px] leading-relaxed" data-realtts-i18n="statWayBody">你与客户都能听懂彼此。</p>
+            <span class="stats-status">Two-way audio</span><span class="stats-meter" aria-hidden="true"><span></span></span>
           </article>
+          <span class="stats-signal" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
         </div>
       </div>
     </section>
@@ -389,31 +461,35 @@
       </div>
     </section>
 
-    <section class="bg-white py-24 md:py-36">
+    <section class="bg-white py-24 md:py-36" id="product-showcase">
       <div class="mx-auto max-w-[1180px] px-5">
         <div class="reveal mx-auto max-w-[860px] text-center">
           <p class="mb-4 text-[17px] font-semibold text-[#0066cc]" data-realtts-i18n="everythingEyebrow">复杂的技术，简单的体验。</p>
           <h2 class="section-title display" data-realtts-i18n="everythingTitle">把复杂交给 RealTTS。<br>你只管专注沟通。</h2>
         </div>
         <div class="mt-16 grid gap-4 md:grid-cols-2">
-          <article class="feature-card reveal overflow-hidden rounded-xl bg-[#f5f5f7]">
-            <div class="p-8 md:p-12">
-              <div class="flex items-center gap-4"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#0071e3]/10 text-[#0071e3]"><i class="fa-solid fa-sliders text-[22px]"></i></span><h3 class="display text-[32px] font-semibold" data-realtts-i18n="presetTitle">一键预设</h3></div>
-              <p class="mt-4 max-w-md text-[17px] leading-relaxed text-black/58" data-realtts-i18n="presetBody">常用沟通工具快速配置。保存不同客户和市场的语言、音色与设备方案，下次一键恢复。</p>
+          <article class="feature-card feature-card-product reveal overflow-hidden rounded-xl">
+            <div class="feature-card-copy p-8 md:p-12">
+              <div class="flex items-center gap-4"><span class="feature-card-icon"><i class="fa-solid fa-sliders text-[21px]"></i></span><h3 class="display text-[32px] font-semibold" data-realtts-i18n="presetTitle">一键预设</h3></div>
+              <p class="mt-4 max-w-md text-[17px] leading-relaxed text-white/58" data-realtts-i18n="presetBody">常用沟通工具快速配置。保存不同客户和市场的语言、音色与设备方案，下次一键恢复。</p>
             </div>
             <div class="product-shot" aria-label="RealTTS preset interface preview">
+              <div class="product-shot-brandbar"><span class="product-shot-brandmark"></span><span>RealTTS / Preset Console</span><span class="product-shot-state"><i></i>Ready</span></div>
               <div class="product-shot-frame"><img src="assets/presets.webp" alt="RealTTS preset configuration interface" loading="lazy" /></div>
               <span class="product-shot-badge">RealTTS Presets</span>
+              <span class="product-shot-signal" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
             </div>
           </article>
-          <article class="feature-card reveal overflow-hidden rounded-xl bg-[#f5f5f7]">
-            <div class="p-8 md:p-12">
-              <div class="flex items-center gap-4"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#0071e3]/10 text-[#0071e3]"><i class="fa-solid fa-file-lines text-[22px]"></i></span><h3 class="display text-[32px] font-semibold" data-realtts-i18n="recordTitle">对话有迹可循</h3></div>
-              <p class="mt-4 max-w-md text-[17px] leading-relaxed text-black/58" data-realtts-i18n="recordBody">原文与译文实时显示。会议结束后一键导出，报价、需求和承诺不再遗漏。</p>
+          <article class="feature-card feature-card-product reveal overflow-hidden rounded-xl">
+            <div class="feature-card-copy p-8 md:p-12">
+              <div class="flex items-center gap-4"><span class="feature-card-icon"><i class="fa-solid fa-file-lines text-[21px]"></i></span><h3 class="display text-[32px] font-semibold" data-realtts-i18n="recordTitle">对话有迹可循</h3></div>
+              <p class="mt-4 max-w-md text-[17px] leading-relaxed text-white/58" data-realtts-i18n="recordBody">原文与译文实时显示。会议结束后一键导出，报价、需求和承诺不再遗漏。</p>
             </div>
             <div class="product-shot" aria-label="RealTTS conversation interface preview">
+              <div class="product-shot-brandbar"><span class="product-shot-brandmark"></span><span>RealTTS / Live Transcript</span><span class="product-shot-state"><i></i>Active</span></div>
               <div class="product-shot-frame"><img src="assets/conversation.webp" alt="RealTTS bilingual conversation record interface" loading="lazy" /></div>
               <span class="product-shot-badge">RealTTS Conversation</span>
+              <span class="product-shot-signal" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
             </div>
           </article>
           <article class="feature-card brand-night-soft reveal overflow-hidden rounded-xl text-white md:col-span-2">
@@ -445,32 +521,38 @@
           <p class="mb-4 text-[17px] font-semibold text-[#0066cc]" data-realtts-i18n="workflowEyebrow">三步，开始全球沟通。</p>
           <h2 class="section-title display" data-realtts-i18n="workflowTitle">连接。选择。开口。</h2>
         </div>
-        <div class="workflow-stage mt-16 grid gap-4 md:grid-cols-3">
-          <article class="workflow-card reveal rounded-xl bg-white p-7 md:p-8">
-            <div class="workflow-step"><span class="workflow-number display text-[52px] font-semibold">01</span><span class="workflow-icon"><i class="fa-solid fa-plug text-[21px]"></i></span></div>
-            <h3 class="mt-7 text-[22px] font-semibold" data-realtts-i18n="step1Title">连接音频</h3>
-            <p class="mt-3 min-h-[52px] text-[16px] leading-relaxed text-black/55" data-realtts-i18n="step1Body">选择麦克风、耳机和沟通工具，或直接应用预设。</p>
+        <div class="workflow-stage mt-16 grid md:grid-cols-3">
+          <article class="workflow-card reveal p-7 md:p-8">
+            <div class="workflow-step"><span class="workflow-number display text-[52px] font-semibold">01</span><span class="workflow-icon"><i class="fa-solid fa-plug text-[20px]"></i></span></div>
+            <div class="workflow-copy">
+              <h3 class="text-[22px] font-semibold" data-realtts-i18n="step1Title">连接音频</h3>
+              <p class="mt-3 min-h-[52px] text-[16px] leading-relaxed text-white/55" data-realtts-i18n="step1Body">选择麦克风、耳机和沟通工具，或直接应用预设。</p>
+            </div>
             <div class="workflow-mini" aria-hidden="true">
-              <div class="workflow-device"><i class="fa-solid fa-microphone text-[14px] text-[#0071e3]"></i><span class="text-[12px] font-semibold text-black/70">Microphone</span><i class="fa-solid fa-check ml-auto text-[12px] text-[#34c759]"></i></div>
-              <div class="workflow-device"><i class="fa-solid fa-headphones text-[14px] text-[#0071e3]"></i><span class="text-[12px] font-semibold text-black/70">Headphones</span><i class="fa-solid fa-check ml-auto text-[12px] text-[#34c759]"></i></div>
+              <div class="workflow-device"><i class="fa-solid fa-microphone text-[14px] text-[#2997ff]"></i><span class="text-[12px] font-semibold text-white/72">Microphone</span><i class="fa-solid fa-check ml-auto text-[12px] text-[#2997ff]"></i></div>
+              <div class="workflow-device"><i class="fa-solid fa-headphones text-[14px] text-[#2997ff]"></i><span class="text-[12px] font-semibold text-white/72">Headphones</span><i class="fa-solid fa-check ml-auto text-[12px] text-[#2997ff]"></i></div>
             </div>
           </article>
-          <article class="workflow-card reveal rounded-xl bg-white p-7 md:p-8">
-            <div class="workflow-step"><span class="workflow-number display text-[52px] font-semibold">02</span><span class="workflow-icon"><i class="fa-solid fa-language text-[22px]"></i></span></div>
-            <h3 class="mt-7 text-[22px] font-semibold" data-realtts-i18n="step2Title">选择语言</h3>
-            <p class="mt-3 min-h-[52px] text-[16px] leading-relaxed text-black/55" data-realtts-i18n="step2Body">设定你与客户的语言和声音，一键交换方向。</p>
+          <article class="workflow-card reveal p-7 md:p-8">
+            <div class="workflow-step"><span class="workflow-number display text-[52px] font-semibold">02</span><span class="workflow-icon"><i class="fa-solid fa-language text-[21px]"></i></span></div>
+            <div class="workflow-copy">
+              <h3 class="text-[22px] font-semibold" data-realtts-i18n="step2Title">选择语言</h3>
+              <p class="mt-3 min-h-[52px] text-[16px] leading-relaxed text-white/55" data-realtts-i18n="step2Body">设定你与客户的语言和声音，一键交换方向。</p>
+            </div>
             <div class="workflow-mini" aria-hidden="true">
-              <div class="workflow-language"><span>中文</span><i class="fa-solid fa-arrow-right text-[12px] text-[#0071e3]"></i><span>English</span></div>
-              <div class="mt-3 flex items-center gap-2 text-[11px] font-semibold text-black/45"><i class="fa-solid fa-arrows-rotate text-[#0071e3]"></i><span>Two-way translation</span></div>
+              <div class="workflow-language"><span>中文</span><i class="fa-solid fa-arrow-right text-[12px] text-[#2997ff]"></i><span>English</span></div>
+              <div class="mt-3 flex items-center gap-2 text-[11px] font-semibold text-white/38"><i class="fa-solid fa-arrows-rotate text-[#2997ff]"></i><span>Two-way translation</span></div>
             </div>
           </article>
-          <article class="workflow-card reveal rounded-xl bg-white p-7 md:p-8">
-            <div class="workflow-step"><span class="workflow-number display text-[52px] font-semibold">03</span><span class="workflow-icon"><i class="fa-solid fa-comments text-[21px]"></i></span></div>
-            <h3 class="mt-7 text-[22px] font-semibold" data-realtts-i18n="step3Title">开始交流</h3>
-            <p class="mt-3 min-h-[52px] text-[16px] leading-relaxed text-black/55" data-realtts-i18n="step3Body">点击开始，像平常一样说话。其余交给 RealTTS。</p>
+          <article class="workflow-card reveal p-7 md:p-8">
+            <div class="workflow-step"><span class="workflow-number display text-[52px] font-semibold">03</span><span class="workflow-icon"><i class="fa-solid fa-comments text-[20px]"></i></span></div>
+            <div class="workflow-copy">
+              <h3 class="text-[22px] font-semibold" data-realtts-i18n="step3Title">开始交流</h3>
+              <p class="mt-3 min-h-[52px] text-[16px] leading-relaxed text-white/55" data-realtts-i18n="step3Body">点击开始，像平常一样说话。其余交给 RealTTS。</p>
+            </div>
             <div class="workflow-mini" aria-hidden="true">
-              <div class="workflow-live"><span class="workflow-pulse"></span><span class="text-[12px] font-semibold text-black/70">RealTTS Live</span><div class="workflow-bars"><i></i><i></i><i></i><i></i><i></i></div></div>
-              <div class="mt-3 text-[11px] font-semibold text-[#34a853]">● Listening and translating</div>
+              <div class="workflow-live"><span class="workflow-pulse"></span><span class="text-[12px] font-semibold text-white/72">RealTTS Live</span><div class="workflow-bars"><i></i><i></i><i></i><i></i><i></i></div></div>
+              <div class="mt-3 text-[11px] font-semibold text-[#2997ff]">● Listening and translating</div>
             </div>
           </article>
         </div>
@@ -660,7 +742,18 @@
     const countObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;const el=entry.target,target=+el.dataset.count,start=performance.now();function tick(t){const p=Math.min((t-start)/900,1);el.textContent=Math.floor(target*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick);countObserver.unobserve(el)}),{threshold:.5});
     document.querySelectorAll('[data-count]').forEach(el=>countObserver.observe(el));
 
-    window.addEventListener('scroll',()=>{document.getElementById('progress').style.transform=`scaleX(${window.scrollY/(document.documentElement.scrollHeight-innerHeight)})`;},{passive:true});
+    const experienceSection=document.getElementById('experience');
+    let parallaxFrame=0;
+    window.addEventListener('scroll',()=>{
+      document.getElementById('progress').style.transform=`scaleX(${window.scrollY/(document.documentElement.scrollHeight-innerHeight)})`;
+      if(parallaxFrame)return;
+      parallaxFrame=requestAnimationFrame(()=>{
+        const rect=experienceSection.getBoundingClientRect();
+        const offset=Math.max(-70,Math.min(70,(innerHeight/2-(rect.top+rect.height/2))*.08));
+        experienceSection.style.setProperty('--parallax-y',`${offset}px`);
+        parallaxFrame=0;
+      });
+    },{passive:true});
     document.getElementById('platformClone').innerHTML=document.getElementById('platformSet').innerHTML;
     document.getElementById('swapDemo').addEventListener('click',e=>e.currentTarget.classList.toggle('rotate-180'));
     const copyToast=document.getElementById('copyToast');
