@@ -296,6 +296,27 @@
     @media (prefers-reduced-motion:reduce) {
       *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important; }
     }
+    /* no-app-needed + pricing sections */
+    .noapp-section { background:#eef1f5; background-image:radial-gradient(circle at 16% 14%,rgba(255,255,255,.96),transparent 34%),radial-gradient(circle at 86% 76%,rgba(184,214,244,.4),transparent 32%),linear-gradient(150deg,#f8f9fb 0%,#e9edf2 55%,#f6f8fa 100%); color:#1d1d1f; }
+    .app-badge { display:grid; place-items:center; width:84px; height:84px; border-radius:26px; background:#fff; color:var(--c); box-shadow:0 18px 44px rgba(49,69,94,.13),inset 0 1px 0 #fff; border:1px solid rgba(255,255,255,.94); transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease; }
+    .app-badge:hover { transform:translateY(-6px); box-shadow:0 26px 60px rgba(49,69,94,.18),inset 0 1px 0 #fff; }
+    .app-badge i { font-size:38px; }
+    .pricing-section { background:#eef1f5; background-image:radial-gradient(circle at 18% 12%,rgba(255,255,255,.97),transparent 34%),radial-gradient(circle at 84% 78%,rgba(173,209,244,.42),transparent 32%),linear-gradient(150deg,#f8f9fb 0%,#e8edf2 100%); color:#1d1d1f; }
+    .price-card { position:relative; display:flex; flex-direction:column; padding:30px 26px 28px; border-radius:20px; background:var(--glass-surface); border:1px solid rgba(255,255,255,.94); box-shadow:0 22px 58px rgba(49,69,94,.12),inset 0 1px 0 #fff; backdrop-filter:blur(24px) saturate(145%); transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease; }
+    .price-card:hover { transform:translateY(-6px); box-shadow:0 30px 72px rgba(49,69,94,.17),inset 0 1px 0 #fff; }
+    .price-card-featured { background:var(--glass-strong); border-color:rgba(0,113,227,.28); box-shadow:0 26px 70px rgba(0,113,227,.16),inset 0 1px 0 #fff; }
+    .price-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); padding:5px 14px; border-radius:999px; background:#0071e3; color:#fff; font-size:12px; font-weight:700; letter-spacing:.02em; box-shadow:0 10px 24px rgba(0,113,227,.28); }
+    .price-plan { color:rgba(29,29,31,.55); font-size:15px; font-weight:600; letter-spacing:.02em; }
+    .price-amount { display:flex; align-items:baseline; gap:2px; margin-top:14px; color:#1d1d1f; }
+    .price-cur { font-size:22px; font-weight:650; letter-spacing:-.02em; }
+    .price-num { font-size:clamp(2.6rem,5vw,3.4rem); line-height:.96; font-weight:650; letter-spacing:-.04em; font-variant-numeric:tabular-nums; }
+    .price-unit { margin-left:6px; font-size:14px; font-weight:600; color:rgba(29,29,31,.5); }
+    .price-equiv { margin-top:10px; font-size:13px; color:rgba(29,29,31,.5); }
+    .price-feats { margin:22px 0 24px; padding:0; list-style:none; display:flex; flex-direction:column; gap:12px; }
+    .price-feats li { display:flex; align-items:flex-start; gap:10px; font-size:14.5px; color:rgba(29,29,31,.72); }
+    .price-feats li i { margin-top:3px; color:#0071e3; }
+    .price-cta { margin-top:auto; display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:13px 18px; border-radius:12px; background:#0071e3; color:#fff; font-size:15px; font-weight:600; text-decoration:none; transition:background .25s ease, transform .2s ease; }
+    .price-cta:hover { background:#005bbd; transform:translateY(-2px); }
     /* trust: user stats + partner logo marquee */
     .trust-section { background:#eef1f5; background-image:radial-gradient(circle at 14% 16%,rgba(255,255,255,.96),transparent 34%),radial-gradient(circle at 86% 74%,rgba(184,214,244,.4),transparent 32%),linear-gradient(150deg,#f8f9fb 0%,#e9edf2 55%,#f6f8fa 100%); color:#1d1d1f; }
     .trust-stat { position:relative; overflow:hidden; border:1px solid rgba(255,255,255,.94); border-radius:16px; background:var(--glass-surface); box-shadow:0 22px 58px rgba(49,69,94,.12),inset 0 1px 0 #fff; backdrop-filter:blur(24px) saturate(145%); transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease; }
@@ -735,6 +756,68 @@
       </div>
     </section>
 
+    <section class="noapp-section py-24 md:py-32" id="noapp">
+      <div class="mx-auto max-w-[1120px] px-5">
+        <div class="reveal text-center">
+          <p class="mb-4 text-[17px] font-semibold text-[#0071e3]" data-realtts-i18n="noappEyebrow">不挑软件，支持任意可自定义音频设备的工具</p>
+          <h2 class="section-title display" data-realtts-i18n="noappTitle">客户无需换 App，照常聊即可</h2>
+          <p class="mx-auto mt-6 max-w-[720px] text-[19px] leading-relaxed text-black/62" data-realtts-i18n="noappBody">RealTTS 通过虚拟音频设备工作。只要你的聊天或通话工具允许选择麦克风或扬声器——例如微信、WhatsApp、LINE、Zoom、Teams、Skype 等——就能直接实现实时双向翻译，无需让客户安装任何新软件。</p>
+        </div>
+        <div class="mt-14 flex flex-wrap items-center justify-center gap-7">
+          <div class="app-badge" style="--c:#07c160"><i class="fa-brands fa-weixin"></i></div>
+          <div class="app-badge" style="--c:#25D366"><i class="fa-brands fa-whatsapp"></i></div>
+          <div class="app-badge" style="--c:#00B900"><svg viewBox="0 0 24 24" width="38" height="38" fill="currentColor" aria-hidden="true"><path d="M12 3C6.9 3 3 6.4 3 10.4c0 2.4 1.4 4.5 3.5 5.9-.2.8-.7 2.3-1.4 3.4 1.4-.6 3.3-1.6 3.3-1.6.8.2 1.7.3 2.6.3 5.1 0 9-3.4 9-7.5S17.1 3 12 3z"/></svg></div>
+        </div>
+        <p class="mt-9 text-center text-[16px] text-black/55" data-realtts-i18n="noappAppsLine">微信 · WhatsApp · LINE · Zoom · Teams · Skype —— 支持音频设备选择，即可无缝使用。</p>
+      </div>
+    </section>
+
+    <section class="pricing-section py-24 md:py-32" id="pricing">
+      <div class="mx-auto max-w-[1120px] px-5">
+        <div class="reveal text-center">
+          <p class="mb-4 text-[17px] font-semibold text-[#0071e3]" data-realtts-i18n="pricingEyebrow">简单的定价，按设备计费</p>
+          <h2 class="section-title display" data-realtts-i18n="pricingTitle">一份投入，<br>打开全球客户。</h2>
+          <p class="mx-auto mt-6 max-w-[640px] text-[18px] leading-relaxed text-black/60" data-realtts-i18n="pricingBody">按设备按月计费，随时升级。价格已含实时双向翻译、记录导出与使用支持。</p>
+        </div>
+        <div class="mt-14 grid gap-5 md:grid-cols-3">
+          <div class="price-card reveal">
+            <p class="price-plan" data-realtts-i18n="planMonthly">月付</p>
+            <div class="price-amount"><span class="price-cur">¥</span><span class="price-num">110</span><span class="price-unit" data-realtts-i18n="perMonthDevice">/ 月 / 台</span></div>
+            <p class="price-equiv" data-realtts-i18n="planMonthlyEquiv">按月付费，灵活起停</p>
+            <ul class="price-feats">
+              <li><i class="fa-solid fa-check"></i><span data-realtts-i18n="priceFeat1">双向实时语音翻译</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-realtts-i18n="priceFeat2">微信 / WhatsApp / LINE 多平台</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-realtts-i18n="priceFeat3">记录导出与使用支持</span></li>
+            </ul>
+            <a href="#contact" class="price-cta" data-realtts-i18n="planCta">联系购买</a>
+          </div>
+          <div class="price-card reveal">
+            <p class="price-plan" data-realtts-i18n="planQuarterly">季付</p>
+            <div class="price-amount"><span class="price-cur">¥</span><span class="price-num">330</span><span class="price-unit" data-realtts-i18n="perQuarter">/ 季</span></div>
+            <p class="price-equiv" data-realtts-i18n="planQuarterlyEquiv">相当于 ¥110 / 月 / 台</p>
+            <ul class="price-feats">
+              <li><i class="fa-solid fa-check"></i><span data-realtts-i18n="priceFeat1">双向实时语音翻译</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-realtts-i18n="priceFeat2">微信 / WhatsApp / LINE 多平台</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-realtts-i18n="priceFeat3">记录导出与使用支持</span></li>
+            </ul>
+            <a href="#contact" class="price-cta" data-realtts-i18n="planCta">联系购买</a>
+          </div>
+          <div class="price-card price-card-featured reveal">
+            <span class="price-badge" data-realtts-i18n="planYearBadge">推荐</span>
+            <p class="price-plan" data-realtts-i18n="planYearly">年付</p>
+            <div class="price-amount"><span class="price-cur">¥</span><span class="price-num">1,320</span><span class="price-unit" data-realtts-i18n="perYear">/ 年</span></div>
+            <p class="price-equiv" data-realtts-i18n="planYearlyEquiv">相当于 ¥110 / 月 / 台</p>
+            <ul class="price-feats">
+              <li><i class="fa-solid fa-check"></i><span data-realtts-i18n="priceFeat1">双向实时语音翻译</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-realtts-i18n="priceFeat2">微信 / WhatsApp / LINE 多平台</span></li>
+              <li><i class="fa-solid fa-check"></i><span data-realtts-i18n="priceFeat3">记录导出与使用支持</span></li>
+            </ul>
+            <a href="#contact" class="price-cta" data-realtts-i18n="planCta">联系购买</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="conversion-glow relative overflow-hidden py-24 md:py-36" id="contact">
       <div class="mx-auto max-w-[1120px] px-5">
         <div class="grid items-center gap-14 md:grid-cols-[1.15fr_.85fr]">
@@ -743,14 +826,15 @@
             <h2 class="contact-title display" data-realtts-i18n="finalTitle"><span class="contact-title-line">当语言不再成为阻碍成交的壁垒，</span><span class="contact-title-line">贸易才有更大的价值空间。</span></h2>
             <p class="mt-7 max-w-[650px] text-[19px] leading-relaxed text-black/62 md:text-[22px]" data-realtts-i18n="finalBody">联系我们获取购买咨询和配置支持。告诉我们你常用的平台和目标语言，我们会给出适合的使用方案。</p>
             <div class="mt-9 grid gap-3 sm:grid-cols-2">
-              <button type="button" class="copy-contact group flex cursor-pointer items-center gap-4 rounded-xl bg-white p-4 text-left text-[#1d1d1f] transition hover:bg-[#f5f5f7] active:scale-[.99]" data-copy="iado@foxmail.com" aria-label="复制邮箱"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#0071e3] text-white"><i class="fa-solid fa-envelope"></i></span><span><small class="block text-[12px] text-black/45">Email</small><strong class="text-[15px]">iado@foxmail.com</strong></span><span class="copy-icon ml-auto grid h-9 w-9 place-items-center rounded-full bg-black/5 text-black/45 transition group-hover:bg-[#0071e3] group-hover:text-white"><i class="fa-regular fa-copy"></i></span></button>
-              <button type="button" class="copy-contact group flex cursor-pointer items-center gap-4 rounded-xl bg-white p-4 text-left text-[#1d1d1f] transition hover:bg-[#f5f5f7] active:scale-[.99]" data-copy="14681797" aria-label="复制 QQ 号码"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#0071e3] text-white"><i class="fa-brands fa-qq"></i></span><span><small class="block text-[12px] text-black/45">QQ</small><strong class="text-[15px]">14681797</strong></span><span class="copy-icon ml-auto grid h-9 w-9 place-items-center rounded-full bg-black/5 text-black/45 transition group-hover:bg-[#0071e3] group-hover:text-white"><i class="fa-regular fa-copy"></i></span></button>
+              <button type="button" id="contactEmailBtn" class="copy-contact group flex cursor-pointer items-center gap-4 rounded-xl bg-white p-4 text-left text-[#1d1d1f] transition hover:bg-[#f5f5f7] active:scale-[.99]" data-copy="iado@foxmail.com" aria-label="复制邮箱"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#0071e3] text-white"><i class="fa-solid fa-envelope"></i></span><span><small class="block text-[12px] text-black/45">Email</small><strong class="text-[15px]">iado@foxmail.com</strong></span><span class="copy-icon ml-auto grid h-9 w-9 place-items-center rounded-full bg-black/5 text-black/45 transition group-hover:bg-[#0071e3] group-hover:text-white"><i class="fa-regular fa-copy"></i></span></button>
+              <button type="button" id="contactQqBtn" class="copy-contact group flex cursor-pointer items-center gap-4 rounded-xl bg-white p-4 text-left text-[#1d1d1f] transition hover:bg-[#f5f5f7] active:scale-[.99]" data-copy="14681797" aria-label="复制 QQ 号码"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#0071e3] text-white"><i class="fa-brands fa-qq"></i></span><span><small class="block text-[12px] text-black/45">QQ</small><strong class="text-[15px]">14681797</strong></span><span class="copy-icon ml-auto grid h-9 w-9 place-items-center rounded-full bg-black/5 text-black/45 transition group-hover:bg-[#0071e3] group-hover:text-white"><i class="fa-regular fa-copy"></i></span></button>
+              <a id="contactWhatsappBtn" href="#" target="_blank" rel="noopener" class="group hidden flex cursor-pointer items-center gap-4 rounded-xl bg-white p-4 text-left text-[#1d1d1f] transition hover:bg-[#f5f5f7] active:scale-[.99]" aria-label="通过 WhatsApp 联系"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#25D366] text-white"><i class="fa-brands fa-whatsapp"></i></span><span><small class="block text-[12px] text-black/45">WhatsApp</small><strong class="text-[15px]">—</strong></span><span class="ml-auto grid h-9 w-9 place-items-center rounded-full bg-black/5 text-black/45 transition group-hover:bg-[#25D366] group-hover:text-white"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></a>
             </div>
             <div class="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-[14px] text-black/58"><span><i class="fa-solid fa-check mr-2 text-[#0071e3]"></i><span data-realtts-i18n="contactTrust1">购买前咨询</span></span><span><i class="fa-solid fa-check mr-2 text-[#0071e3]"></i><span data-realtts-i18n="contactTrust2">安装配置指导</span></span><span><i class="fa-solid fa-check mr-2 text-[#0071e3]"></i><span data-realtts-i18n="contactTrust3">使用问题支持</span></span></div>
           </div>
           <div class="fluid-glass-strong reveal mx-auto w-full max-w-[400px] rounded-xl p-5 text-center text-[#1d1d1f] md:p-7">
-            <div class="overflow-hidden rounded-lg bg-[#f5f5f7] p-2"><img src="assets/wechat.webp" alt="RealTTS 微信联系二维码" class="aspect-square w-full object-cover" /></div>
-            <div class="mt-6 flex items-center justify-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-full bg-[#07c160] text-white"><i class="fa-brands fa-weixin text-xl"></i></span><div class="text-left"><p class="text-[19px] font-semibold" data-realtts-i18n="scanWechat">微信扫码联系</p><p class="mt-1 text-[13px] text-black/45" data-realtts-i18n="scanWechatBody">备注“RealTTS”，方便快速处理</p></div></div>
+            <div class="overflow-hidden rounded-lg bg-[#f5f5f7] p-2"><img id="contactQrImg" src="assets/wechat.webp" alt="联系二维码" class="aspect-square w-full object-cover" onerror="this.onerror=null;this.src='https://picsum.photos/400/400?random='+Date.now();var c=document.getElementById('contactQrCaption');if(c)c.classList.add('hidden');" /></div>
+            <div id="contactQrCaption" class="mt-6 flex items-center justify-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-full bg-[#07c160] text-white"><i class="fa-brands fa-weixin text-xl"></i></span><div class="text-left"><p class="text-[19px] font-semibold" data-realtts-i18n="scanWechat">微信扫码联系</p><p class="mt-1 text-[13px] text-black/45" data-realtts-i18n="scanWechatBody">备注“RealTTS”，方便快速处理</p></div></div>
           </div>
         </div>
       </div>
@@ -769,6 +853,16 @@
       <p class="pt-7" data-realtts-i18n="copyright">Copyright © 2026 RealTTS. 保留所有权利。</p>
     </div>
   </footer>
+
+  <script type="application/json" id="contactPresets">
+  {
+    "default": { "email": "iado@foxmail.com", "qq": "14681797", "whatsapp": "", "qrcode": "assets/wechat.webp" },
+    "1": { "email": "sales_a@example.com", "qq": "11111111", "whatsapp": "", "qrcode": "assets/wechat1.webp" },
+    "2": { "email": "sales_b@example.com", "qq": "22222222", "whatsapp": "8613800138000", "qrcode": "assets/wechat2.webp" },
+    "3": { "email": "sales_c@example.com", "qq": "33333333", "whatsapp": "8613900139000", "qrcode": "assets/wechat3.webp" },
+    "4": { "email": "sales_d@example.com", "qq": "44444444", "whatsapp": "", "qrcode": "assets/wechat4.webp" }
+  }
+  </script>
 
   <script>
     const languages = {
@@ -856,6 +950,30 @@
       'ar':{reviewsEyebrow:'آراء حقيقية من مستخدمين حول العالم.',reviewsTitle:'مع RealTTS،<br>حوّلوا اللغة إلى طلبات.',showMoreReviews:'عرض المزيد',reviewsAllShown:'تم عرض جميع التقييمات الـ 40'}
     };
 
+    const noappTranslations={
+      'zh-CN':{noappEyebrow:'不挑软件，支持任意可自定义音频设备的工具',noappTitle:'客户无需换 App，照常聊即可',noappBody:'RealTTS 通过虚拟音频设备工作。只要你的聊天或通话工具允许选择麦克风或扬声器——例如微信、WhatsApp、LINE、Zoom、Teams、Skype 等——就能直接实现实时双向翻译，无需让客户安装任何新软件。',noappAppsLine:'微信 · WhatsApp · LINE · Zoom · Teams · Skype —— 支持音频设备选择，即可无缝使用。'},
+      'zh-TW':{noappEyebrow:'不挑軟體，支援任意可自訂音訊設備的工具',noappTitle:'客戶無需換 App，照常聊即可',noappBody:'RealTTS 透過虛擬音訊設備工作。只要你的聊天或通話工具允許選擇麥克風或揚聲器——例如微信、WhatsApp、LINE、Zoom、Teams、Skype 等——就能直接實現即時雙向翻譯，無需讓客戶安裝任何新軟體。',noappAppsLine:'微信 · WhatsApp · LINE · Zoom · Teams · Skype —— 支援音訊設備選擇，即可無縫使用。'},
+      'en':{noappEyebrow:'Works with any app that lets you choose audio devices',noappTitle:'No new app for your clients to install',noappBody:'RealTTS works through a virtual audio device. As long as your chat or calling app lets you pick the microphone or speaker — WeChat, WhatsApp, LINE, Zoom, Teams, Skype and more — real-time two-way translation just works, with zero installation on the client side.',noappAppsLine:'WeChat · WhatsApp · LINE · Zoom · Teams · Skype — if it lets you choose audio devices, it works seamlessly.'},
+      'ja':{noappEyebrow:'音声デバイスを選べるアプリなら対応',noappTitle:'お客様に新しいアプリは不要',noappBody:'RealTTS は仮想音声デバイス経由で動作します。マイクやスピーカーを選択できるチャット・通話アプリであれば — WeChat、WhatsApp、LINE、Zoom、Teams、Skype など — クライアント側に何もインストールせず、リアルタイム双方向翻訳がそのまま使えます。',noappAppsLine:'WeChat · WhatsApp · LINE · Zoom · Teams · Skype — 音声デバイスを選べれば、すぐに使えます。'},
+      'ko':{noappEyebrow:'오디오 장치를 선택할 수 있는 앱이라면 모두 지원',noappTitle:'고객은 새 앱 설치 없이 그대로 사용',noappBody:'RealTTS는 가상 오디오 장치를 통해 작동합니다. 마이크나 스피커를 선택할 수 있는 채팅·통화 앱이라면 — WeChat, WhatsApp, LINE, Zoom, Teams, Skype 등 — 고객 측에 아무것도 설치하지 않고 실시간 양방향 번역이 가능합니다.',noappAppsLine:'WeChat · WhatsApp · LINE · Zoom · Teams · Skype — 오디오 장치 선택만 지원하면 바로 사용 가능합니다.'},
+      'ru':{noappEyebrow:'Работает с любым приложением, где можно выбрать аудиоустройство',noappTitle:'Клиентам не нужно устанавливать новое приложение',noappBody:'RealTTS работает через виртуальное аудиоустройство. Если в вашем мессенджере или приложении для звонков можно выбрать микрофон или динамик — WeChat, WhatsApp, LINE, Zoom, Teams, Skype и другие — двусторонний перевод в реальном времени работает сразу, без установки чего-либо на стороне клиента.',noappAppsLine:'WeChat · WhatsApp · LINE · Zoom · Teams · Skype — если приложение позволяет выбрать аудиоустройство, оно работает без дополнительных настроек.'},
+      'es':{noappEyebrow:'Compatible con cualquier app que permita elegir dispositivos de audio',noappTitle:'Tus clientes no necesitan instalar una app nueva',noappBody:'RealTTS funciona a través de un dispositivo de audio virtual. Si tu app de chat o llamadas permite elegir micrófono o altavoz — WeChat, WhatsApp, LINE, Zoom, Teams, Skype y más — la traducción bidireccional en tiempo real funciona al instante, sin instalar nada del lado del cliente.',noappAppsLine:'WeChat · WhatsApp · LINE · Zoom · Teams · Skype — si permite elegir dispositivos de audio, funciona sin problemas.'},
+      'pt':{noappEyebrow:'Funciona com qualquer app que permita escolher dispositivos de áudio',noappTitle:'Seus clientes não precisam instalar um app novo',noappBody:'O RealTTS funciona por meio de um dispositivo de áudio virtual. Se o seu app de chat ou chamadas permitir escolher microfone ou alto-falante — WeChat, WhatsApp, LINE, Zoom, Teams, Skype e outros — a tradução bidirecional em tempo real funciona na hora, sem instalar nada do lado do cliente.',noappAppsLine:'WeChat · WhatsApp · LINE · Zoom · Teams · Skype — se permite escolher dispositivos de áudio, funciona perfeitamente.'},
+      'ar':{noappEyebrow:'يعمل مع أي تطبيق يسمح باختيار أجهزة الصوت',noappTitle:'عملاؤك لا يحتاجون لتثبيت تطبيق جديد',noappBody:'يعمل RealTTS عبر جهاز صوت افتراضي. طالما أن أداة الدردشة أو المكالمات تسمح لك باختيار الميكروفون أو مكبر الصوت — مثل WeChat و WhatsApp و LINE و Zoom و Teams و Skype وغيرها — فإن الترجمة الفورية ثنائية الاتجاه تعمل مباشرة، دون تثبيت أي شيء على جهاز العميل.',noappAppsLine:'WeChat · WhatsApp · LINE · Zoom · Teams · Skype — إذا كان يتيح اختيار أجهزة الصوت، فهو يعمل بسلاسة.'}
+    };
+
+    const pricingTranslations={
+      'zh-CN':{pricingEyebrow:'简单的定价，按设备计费',pricingTitle:'一份投入，打开全球客户。',pricingBody:'按设备按月计费，随时升级。价格已含实时双向翻译、记录导出与使用支持。',planMonthly:'月付',planQuarterly:'季付',planYearly:'年付',perMonthDevice:'/ 月 / 台',perQuarter:'/ 季',perYear:'/ 年',planMonthlyEquiv:'按月付费，灵活起停',planQuarterlyEquiv:'相当于 ¥110 / 月 / 台',planYearlyEquiv:'相当于 ¥110 / 月 / 台',planYearBadge:'推荐',planCta:'联系购买',priceFeat1:'双向实时语音翻译',priceFeat2:'微信 / WhatsApp / LINE 多平台',priceFeat3:'记录导出与使用支持'},
+      'zh-TW':{pricingEyebrow:'簡單的定價，按設備計費',pricingTitle:'一份投入，打開全球客戶。',pricingBody:'按設備按月計費，隨時升級。價格已含即時雙向翻譯、記錄匯出與使用支援。',planMonthly:'月付',planQuarterly:'季付',planYearly:'年付',perMonthDevice:'/ 月 / 台',perQuarter:'/ 季',perYear:'/ 年',planMonthlyEquiv:'按月付費，靈活起停',planQuarterlyEquiv:'相當於 ¥110 / 月 / 台',planYearlyEquiv:'相當於 ¥110 / 月 / 台',planYearBadge:'推薦',planCta:'聯絡購買',priceFeat1:'雙向即時語音翻譯',priceFeat2:'微信 / WhatsApp / LINE 多平台',priceFeat3:'記錄匯出與使用支援'},
+      'en':{pricingEyebrow:'Simple pricing, billed per device',pricingTitle:'One investment. Global clients unlocked.',pricingBody:'Billed monthly per device, upgrade anytime. Price includes live two-way translation, export and support.',planMonthly:'Monthly',planQuarterly:'Quarterly',planYearly:'Annual',perMonthDevice:'/ month / device',perQuarter:'/ quarter',perYear:'/ year',planMonthlyEquiv:'Pay monthly, pause anytime',planQuarterlyEquiv:'Equals ¥110 / month / device',planYearlyEquiv:'Equals ¥110 / month / device',planYearBadge:'Recommended',planCta:'Contact sales',priceFeat1:'Two-way live voice translation',priceFeat2:'WeChat / WhatsApp / LINE multi-platform',priceFeat3:'Recording export & usage support'},
+      'ja':{pricingEyebrow:'シンプルな料金、デバイスごとの課金',pricingTitle:'一度の投資で、世界の顧客をつなぐ。',pricingBody:'デバイスごと月額課金、いつでもアップグレード。リアルタイム双方向翻訳・記録書き出し・サポートを含みます。',planMonthly:'月額',planQuarterly:'四半期',planYearly:'年額',perMonthDevice:'/ 月 / 台',perQuarter:'/ 四半期',perYear:'/ 年',planMonthlyEquiv:'月額払い、いつでも停止可',planQuarterlyEquiv:'月額 ¥110 / 台 相当',planYearlyEquiv:'月額 ¥110 / 台 相当',planYearBadge:'おすすめ',planCta:'購入相談',priceFeat1:'双方向リアルタイム音声翻訳',priceFeat2:'WeChat / WhatsApp / LINE マルチプラットフォーム',priceFeat3:'記録の書き出しと利用サポート'},
+      'ko':{pricingEyebrow:'단순한 요금제, 기기별 과금',pricingTitle:'한 번의 투자로, 전 세계 고객과 연결됩니다.',pricingBody:'기기별 월 정액, 언제든 업그레이드. 실시간 양방향 번역·기록 내보내기·지원이 포함됩니다.',planMonthly:'월간',planQuarterly:'분기',planYearly:'연간',perMonthDevice:'/ 월 / 기기',perQuarter:'/ 분기',perYear:'/ 년',planMonthlyEquiv:'월 정액, 언제든 정지 가능',planQuarterlyEquiv:'월 ¥110 / 기기 와 동일',planYearlyEquiv:'월 ¥110 / 기기 와 동일',planYearBadge:'추천',planCta:'구매 문의',priceFeat1:'양방향 실시간 음성 번역',priceFeat2:'WeChat / WhatsApp / LINE 멀티플랫폼',priceFeat3:'기록 내보내기 및 사용 지원'},
+      'ru':{pricingEyebrow:'Простая цена — оплата за устройство',pricingTitle:'Одна инвестиция — доступ к глобальным клиентам.',pricingBody:'Ежемесячная оплата за устройство, обновление в любой момент. В цену входят двусторонний перевод, экспорт и поддержка.',planMonthly:'Помесячно',planQuarterly:'Поквартально',planYearly:'Годовой',perMonthDevice:'/ мес / устройство',perQuarter:'/ квартал',perYear:'/ год',planMonthlyEquiv:'Помесячно, можно приостановить',planQuarterlyEquiv:'Это ¥110 / мес / устройство',planYearlyEquiv:'Это ¥110 / мес / устройство',planYearBadge:'Рекомендуем',planCta:'Связаться для покупки',priceFeat1:'Двусторонний голосовой перевод в реальном времени',priceFeat2:'WeChat / WhatsApp / LINE — несколько платформ',priceFeat3:'Экспорт записей и поддержка'},
+      'es':{pricingEyebrow:'Precios simples, por dispositivo',pricingTitle:'Una inversión. Clientes de todo el mundo.',pricingBody:'Pago mensual por dispositivo, mejora cuando quieras. Incluye traducción en vivo, exportación y soporte.',planMonthly:'Mensual',planQuarterly:'Trimestral',planYearly:'Anual',perMonthDevice:'/ mes / dispositivo',perQuarter:'/ trimestre',perYear:'/ año',planMonthlyEquiv:'Pago mensual, pausa cuando quieras',planQuarterlyEquiv:'Equivale a ¥110 / mes / dispositivo',planYearlyEquiv:'Equivale a ¥110 / mes / dispositivo',planYearBadge:'Recomendado',planCta:'Contactar para comprar',priceFeat1:'Traducción de voz bidireccional en vivo',priceFeat2:'WeChat / WhatsApp / LINE en múltiples plataformas',priceFeat3:'Exportación de grabaciones y soporte'},
+      'pt':{pricingEyebrow:'Preços simples, por dispositivo',pricingTitle:'Um investimento. Clientes do mundo todo.',pricingBody:'Pagamento mensal por dispositivo, atualize quando quiser. Inclui tradução ao vivo, exportação e suporte.',planMonthly:'Mensal',planQuarterly:'Trimestral',planYearly:'Anual',perMonthDevice:'/ mês / dispositivo',perQuarter:'/ trimestre',perYear:'/ ano',planMonthlyEquiv:'Mensal, pause quando quiser',planQuarterlyEquiv:'Equivale a ¥110 / mês / dispositivo',planYearlyEquiv:'Equivale a ¥110 / mês / dispositivo',planYearBadge:'Recomendado',planCta:'Contato para compra',priceFeat1:'Tradução de voz bidirecional ao vivo',priceFeat2:'WeChat / WhatsApp / LINE em múltiplas plataformas',priceFeat3:'Exportação de gravações e suporte'},
+      'ar':{pricingEyebrow:'تسعير بسيط، لكل جهاز',pricingTitle:'استثمار واحد. عملاء من كل العالم.',pricingBody:'دفع شهري لكل جهاز، ترقية في أي وقت. السعر يشمل الترجمة الفورية والتصدير والدعم.',planMonthly:'شهري',planQuarterly:'ربع سنوي',planYearly:'سنوي',perMonthDevice:'/ شهر / جهاز',perQuarter:'/ ربع سنة',perYear:'/ سنة',planMonthlyEquiv:'شهري، أوقف متى شئت',planQuarterlyEquiv:'يعادل ¥110 / شهر / جهاز',planYearlyEquiv:'يعادل ¥110 / شهر / جهاز',planYearBadge:'موصى به',planCta:'تواصل للشراء',priceFeat1:'ترجمة صوتية فورية ثنائية الاتجاه',priceFeat2:'WeChat / WhatsApp / LINE عبر منصات متعددة',priceFeat3:'تصدير التسجيلات والدعم'}
+    };
+
     const langButton = document.getElementById('langButton');
     const langMenu = document.getElementById('langMenu');
     const langLabel = document.getElementById('langLabel');
@@ -867,7 +985,7 @@
     function setLanguage(code){
       const selectedCode=languages[code]?code:'en';
       const pack=languages[selectedCode];
-      Object.assign(pack,salesTranslations[selectedCode]||salesTranslations['en'],barrierTranslations[selectedCode]||barrierTranslations['en'],videoTranslations[selectedCode]||videoTranslations['en'],purchaseTranslations[selectedCode]||purchaseTranslations['en'],trustTranslations[selectedCode]||trustTranslations['en'],reviewTranslations[selectedCode]||reviewTranslations['en']);
+      Object.assign(pack,salesTranslations[selectedCode]||salesTranslations['en'],barrierTranslations[selectedCode]||barrierTranslations['en'],videoTranslations[selectedCode]||videoTranslations['en'],purchaseTranslations[selectedCode]||purchaseTranslations['en'],trustTranslations[selectedCode]||trustTranslations['en'],reviewTranslations[selectedCode]||reviewTranslations['en'],noappTranslations[selectedCode]||noappTranslations['en'],pricingTranslations[selectedCode]||pricingTranslations['en']);
       document.documentElement.lang=selectedCode; document.documentElement.dir=pack.dir; langLabel.textContent=pack.label;
       document.querySelectorAll('[data-realtts-i18n]').forEach(el=>{ const k=el.dataset.realttsI18n; const value=pack[k]; if(typeof value==='string' && value.trim() && value!==k) el.innerHTML=value; });
       langMenu.querySelectorAll('button').forEach(b=>b.querySelector('i').classList.toggle('hidden',b.dataset.code!==selectedCode));
@@ -887,6 +1005,54 @@
     langButton.addEventListener('click',e=>{e.stopPropagation();langMenu.classList.toggle('open');langButton.setAttribute('aria-expanded',langMenu.classList.contains('open'))});
     document.addEventListener('click',()=>{langMenu.classList.remove('open');langButton.setAttribute('aria-expanded','false');});
     setLanguage(detectBrowserLanguage());
+
+    function applyContactParams(){
+      try {
+        const params = new URLSearchParams(location.search);
+        let presets = {};
+        try { const pe = document.getElementById('contactPresets'); if (pe) presets = JSON.parse(pe.textContent); } catch (e) { presets = {}; }
+        const id = params.get('id');
+        const preset = (id && presets[id]) ? presets[id] : (presets.default || null);
+        const email = params.get('email') || (preset && preset.email) || '';
+        const qq = params.get('qq') || (preset && preset.qq) || '';
+        const whatsapp = params.get('whatsapp') || (preset && preset.whatsapp) || '';
+        function randomQrFallback(){ return 'https://picsum.photos/400/400?random=' + (Date.now() + '-' + Math.random().toString(36).slice(2,8)); }
+        const urlQrRaw = params.has('qrcode') ? params.get('qrcode') : (params.has('qr') ? params.get('qr') : null);
+        const resolvedQr = urlQrRaw !== null ? urlQrRaw.trim() : (preset && preset.qrcode !== undefined ? String(preset.qrcode).trim() : '');
+        const isQrFallback = !resolvedQr;
+        const qrcode = resolvedQr || randomQrFallback();
+
+        // Email：字段为空则隐藏，否则显示并填值
+        const emailBtn = document.getElementById('contactEmailBtn');
+        if (emailBtn) {
+          if (email) { emailBtn.dataset.copy = email; const s = emailBtn.querySelector('strong'); if (s) s.textContent = email; emailBtn.setAttribute('aria-label','复制邮箱 ' + email); emailBtn.classList.remove('hidden'); }
+          else { emailBtn.classList.add('hidden'); }
+        }
+        // QQ：字段为空则隐藏
+        const qqBtn = document.getElementById('contactQqBtn');
+        if (qqBtn) {
+          if (qq) { qqBtn.dataset.copy = qq; const s = qqBtn.querySelector('strong'); if (s) s.textContent = qq; qqBtn.setAttribute('aria-label','复制 QQ 号码 ' + qq); qqBtn.classList.remove('hidden'); }
+          else { qqBtn.classList.add('hidden'); }
+        }
+        // WhatsApp：字段为空则隐藏，否则显示为可点击链接
+        const waBtn = document.getElementById('contactWhatsappBtn');
+        if (waBtn) {
+          if (whatsapp) {
+            const num = whatsapp.replace(/[^0-9]/g,'');
+            const s = waBtn.querySelector('strong'); if (s) s.textContent = whatsapp;
+            waBtn.href = 'https://wa.me/' + num;
+            waBtn.setAttribute('aria-label','通过 WhatsApp 联系 ' + whatsapp);
+            waBtn.classList.remove('hidden');
+          } else { waBtn.classList.add('hidden'); }
+        }
+        // 二维码：始终显示；提供值时覆盖，值为空时自动用随机图片兜底，并隐藏下方微信说明文字
+        const qrImg = document.getElementById('contactQrImg');
+        const qrCaption = document.getElementById('contactQrCaption');
+        if (qrImg) { qrImg.src = qrcode; qrImg.alt = '联系二维码'; }
+        if (qrCaption) { qrCaption.classList.toggle('hidden', isQrFallback); }
+      } catch (e) { console.warn('applyContactParams error', e); }
+    }
+    applyContactParams();
 
     const menuButton=document.getElementById('menuButton'), mobileMenu=document.getElementById('mobileMenu');
     function setMobileMenu(open){mobileMenu.classList.toggle('open',open);document.body.classList.toggle('menu-open',open);menuButton.setAttribute('aria-expanded',String(open));}
