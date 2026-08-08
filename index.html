@@ -861,7 +861,8 @@
     "1": { "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat1.webp" },
     "2": { "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat2.webp" },
     "3": { "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat3.webp" },
-    "4": { "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat4.webp" }
+    "4": { "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat4.webp" },
+    "5": { "email": "297100155@qq.com", "qq": "", "whatsapp": "8613757952434", "qrcode": "assets/wechat5.webp" }
   }
   </script>
 
@@ -989,6 +990,10 @@
       Object.assign(pack,salesTranslations[selectedCode]||salesTranslations['en'],barrierTranslations[selectedCode]||barrierTranslations['en'],videoTranslations[selectedCode]||videoTranslations['en'],purchaseTranslations[selectedCode]||purchaseTranslations['en'],trustTranslations[selectedCode]||trustTranslations['en'],reviewTranslations[selectedCode]||reviewTranslations['en'],noappTranslations[selectedCode]||noappTranslations['en'],pricingTranslations[selectedCode]||pricingTranslations['en']);
       document.documentElement.lang=selectedCode; document.documentElement.dir=pack.dir; langLabel.textContent=pack.label;
       document.querySelectorAll('[data-realtts-i18n]').forEach(el=>{ const k=el.dataset.realttsI18n; const value=pack[k]; if(typeof value==='string' && value.trim() && value!==k) el.innerHTML=value; });
+      const cur = selectedCode==='zh-CN' ? '¥' : '$';
+      document.querySelectorAll('.price-cur').forEach(el=>{ el.textContent=cur; });
+      document.querySelectorAll('.price-original').forEach(el=>{ el.textContent=cur + el.textContent.replace(/^[¥$]\s*/,''); });
+      if(cur==='$'){ document.querySelectorAll('.price-equiv').forEach(el=>{ el.textContent=el.textContent.replace(/¥/g,'$'); }); }
       langMenu.querySelectorAll('button').forEach(b=>b.querySelector('i').classList.toggle('hidden',b.dataset.code!==selectedCode));
       langMenu.classList.remove('open'); langButton.setAttribute('aria-expanded','false');
     }
