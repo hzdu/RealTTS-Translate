@@ -149,14 +149,52 @@
     .feature-card:hover .product-shot-frame img { transform:none; filter:contrast(1.04) saturate(1); }
     .product-shot-badge { position:absolute; left:7%; bottom:22px; z-index:3; display:flex; align-items:center; gap:7px; border:1px solid rgba(255,255,255,.92); border-radius:999px; background:rgba(255,255,255,.72); padding:7px 11px; color:#1d1d1f; font-size:11px; font-weight:600; letter-spacing:.01em; box-shadow:0 8px 22px rgba(49,69,94,.1),inset 0 1px 0 #fff; backdrop-filter:blur(14px); }
     .product-shot-badge::before { content:""; width:6px; height:6px; border-radius:50%; background:#0071e3; box-shadow:0 0 0 4px rgba(0,113,227,.09); }
-    .video-play-layer { position:absolute; inset:0; z-index:4; display:grid; place-items:center; border:0; background:radial-gradient(circle at center,rgba(7,20,38,.08),rgba(7,20,38,.36)); color:#fff; cursor:pointer; opacity:1; transition:opacity .32s ease,background .32s ease; }
-    .video-play-layer.is-hidden { opacity:0; pointer-events:none; }
-    .video-play-button { position:relative; display:grid; width:94px; height:94px; place-items:center; border:1px solid rgba(255,255,255,.88); border-radius:50%; background:rgba(255,255,255,.76); box-shadow:0 22px 52px rgba(49,69,94,.22),0 0 0 9px rgba(255,255,255,.18),0 0 44px rgba(41,151,255,.22),inset 0 1px 0 #fff; backdrop-filter:blur(20px) saturate(145%); transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,border-color .28s ease; }
-    .video-play-button::before { content:""; position:absolute; inset:8px; border:1px solid rgba(41,151,255,.56); border-radius:50%; }
-    .video-play-button::after { content:""; width:0; height:0; margin-left:7px; border-top:13px solid transparent; border-bottom:13px solid transparent; border-left:20px solid #0071e3; filter:drop-shadow(0 3px 7px rgba(0,113,227,.22)); }
-    .video-play-layer:hover { background:radial-gradient(circle at center,rgba(7,20,38,.02),rgba(7,20,38,.3)); }
-    .video-play-layer:hover .video-play-button { transform:scale(1.075); border-color:rgba(255,255,255,.9); box-shadow:0 26px 64px rgba(0,0,0,.4),0 0 0 12px rgba(41,151,255,.16),0 0 58px rgba(41,151,255,.48),inset 0 1px 0 rgba(255,255,255,.42); }
-    .video-play-layer:active .video-play-button { transform:scale(.96); }
+
+    /* ===== RealTTS 幻灯片（JSON 控制） ===== */
+    .rt-slider { --rt-accent:#0071e3; }
+    .rt-stage { position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:10px; background:#0b0b0d; }
+    .rt-slide { position:absolute; inset:0; opacity:0; visibility:hidden; transform:scale(1.025); transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1); }
+    .rt-slide.is-active { opacity:1; visibility:visible; transform:none; z-index:2; }
+    .rt-slide > img, .rt-slide > video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+    .rt-slide > video { background:#000; }
+    .rt-play { position:absolute; inset:0; z-index:4; display:grid; place-items:center; border:0; background:radial-gradient(circle at center,rgba(7,20,38,.08),rgba(7,20,38,.4)); color:#fff; cursor:pointer; transition:opacity .32s ease, background .32s ease; }
+    .rt-play.is-hidden { opacity:0; pointer-events:none; }
+    .rt-play-btn { position:relative; display:grid; width:90px; height:90px; place-items:center; border:1px solid rgba(255,255,255,.88); border-radius:50%; background:rgba(255,255,255,.76); box-shadow:0 22px 52px rgba(49,69,94,.22),0 0 0 9px rgba(255,255,255,.18),0 0 44px rgba(41,151,255,.22),inset 0 1px 0 #fff; backdrop-filter:blur(20px) saturate(145%); transition:transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease; }
+    .rt-play-btn::before { content:""; position:absolute; inset:8px; border:1px solid rgba(41,151,255,.56); border-radius:50%; }
+    .rt-play-btn::after { content:""; width:0; height:0; margin-left:7px; border-top:13px solid transparent; border-bottom:13px solid transparent; border-left:20px solid #0071e3; filter:drop-shadow(0 3px 7px rgba(0,113,227,.22)); }
+    .rt-play:hover { background:radial-gradient(circle at center,rgba(7,20,38,.02),rgba(7,20,38,.3)); }
+    .rt-play:hover .rt-play-btn { transform:scale(1.075); box-shadow:0 26px 64px rgba(0,0,0,.4),0 0 0 12px rgba(41,151,255,.16),0 0 58px rgba(41,151,255,.48),inset 0 1px 0 rgba(255,255,255,.42); }
+    .rt-play:active .rt-play-btn { transform:scale(.96); }
+    .rt-nav { position:absolute; top:50%; transform:translateY(-50%); z-index:6; width:46px; height:46px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.85); border-radius:50%; background:rgba(255,255,255,.72); color:#1d1d1f; cursor:pointer; font-size:18px; box-shadow:0 12px 28px rgba(49,69,94,.18),inset 0 1px 0 #fff; backdrop-filter:blur(18px) saturate(145%); -webkit-backdrop-filter:blur(18px) saturate(145%); transition:transform .22s ease, background .22s ease; }
+    .rt-nav:hover { background:#fff; transform:translateY(-50%) scale(1.07); }
+    .rt-nav:active { transform:translateY(-50%) scale(.95); }
+    .rt-prev { left:14px; }
+    .rt-next { right:14px; }
+    [dir="rtl"] .rt-prev { left:auto; right:14px; }
+    [dir="rtl"] .rt-next { right:auto; left:14px; }
+    .rt-progress { position:absolute; left:0; right:0; bottom:0; z-index:5; height:3px; background:rgba(255,255,255,.16); }
+    .rt-progress > span { display:block; height:100%; width:0; background:linear-gradient(90deg,#2997ff,#0071e3); }
+    .rt-caption { position:absolute; left:0; right:0; bottom:0; z-index:5; padding:56px 22px 18px; background:linear-gradient(to top,rgba(6,12,22,.82),rgba(6,12,22,.34) 52%,transparent); color:#fff; pointer-events:none; opacity:0; transform:translateY(8px); transition:opacity .45s ease, transform .45s ease; }
+    .rt-caption.is-ready { opacity:1; transform:none; }
+    .rt-caption-title { font-size:clamp(18px,2.4vw,26px); font-weight:650; letter-spacing:-.01em; line-height:1.15; }
+    .rt-caption-text { margin-top:6px; font-size:clamp(13px,1.5vw,15px); line-height:1.45; color:rgba(255,255,255,.82); max-width:82%; }
+    .rt-tabs { display:flex; gap:10px; margin-top:12px; padding:2px; overflow-x:auto; scrollbar-width:thin; scrollbar-color:rgba(0,113,227,.4) transparent; }
+    .rt-tabs::-webkit-scrollbar { height:6px; }
+    .rt-tabs::-webkit-scrollbar-thumb { background:rgba(0,113,227,.35); border-radius:99px; }
+    .rt-tab { position:relative; flex:0 0 auto; width:130px; border:0; border-radius:12px; overflow:hidden; cursor:pointer; padding:0; background:#e9edf2; transition:transform .25s ease, box-shadow .25s ease; }
+    .rt-tab img { width:100%; height:74px; object-fit:cover; display:block; opacity:.6; filter:saturate(.9); transition:opacity .3s ease, filter .3s ease; }
+    .rt-tab-title { position:absolute; left:0; right:0; bottom:0; padding:6px 8px; font-size:12px; font-weight:600; color:#fff; background:linear-gradient(to top,rgba(0,0,0,.72),transparent); text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .rt-tab::after { content:""; position:absolute; inset:0; border:2px solid transparent; border-radius:12px; transition:border-color .25s ease; pointer-events:none; }
+    .rt-tab:hover img { opacity:.92; }
+    .rt-tab.is-active { transform:translateY(-3px); box-shadow:0 14px 28px rgba(49,69,94,.2); }
+    .rt-tab.is-active img { opacity:1; filter:none; }
+    .rt-tab.is-active::after { border-color:var(--rt-accent); }
+    @media (max-width:640px){
+      .rt-tab { width:100px; }
+      .rt-tab img { height:58px; }
+      .rt-caption-text { max-width:100%; }
+      .rt-nav { width:40px; height:40px; font-size:15px; }
+    }
     .dot-grid { background-image:radial-gradient(rgba(255,255,255,.22) 1px,transparent 1px); background-size:22px 22px; }
     .modal-backdrop { opacity:0; pointer-events:none; transition:opacity .3s ease; }
     .modal-backdrop.open { opacity:1; pointer-events:auto; }
@@ -288,8 +326,6 @@
       .product-shot-brandbar { left:6%; right:6%; }
       .product-shot-badge { left:6%; bottom:16px; }
       .product-shot-signal { right:6%; bottom:18px; }
-      .video-play-button { width:76px; height:76px; }
-      .video-play-button::after { border-top-width:11px; border-bottom-width:11px; border-left-width:17px; }
       .hero-title .hero-word + .hero-word { margin-top:.1em; }
       .section-title { font-size:clamp(2.15rem,10vw,3.35rem); line-height:1.16; letter-spacing:-.008em; }
       .app-shell { border-radius:12px !important; }
@@ -441,14 +477,47 @@
 
     <section class="bg-[#f5f5f7] py-24 md:py-32" id="video">
       <div class="mx-auto max-w-[1180px] px-5">
-        <div class="fluid-glass-strong reveal mx-auto max-w-[1040px] overflow-hidden rounded-xl p-2 md:p-3">
-          <div class="relative aspect-video overflow-hidden rounded-lg bg-[#111]">
-            <video id="adVideo" class="h-full w-full object-cover" controls playsinline preload="metadata" poster="./assets/realtts-ad-mp4.webp">
-              <source src="./assets/realtts-ad.mp4" type="video/mp4" />
-            </video>
-            <button id="videoPlayButton" class="video-play-layer" type="button" aria-label="播放 RealTTS 视频">
-              <span class="video-play-button" aria-hidden="true"></span>
-            </button>
+        <div class="reveal mx-auto max-w-[1040px] text-center">
+          <h2 class="section-title display" data-realtts-i18n="videoTitle">把语言变成订单</h2>
+        </div>
+        <div class="reveal mt-14">
+          <div class="fluid-glass-strong mx-auto max-w-[1040px] overflow-hidden rounded-xl p-2 md:p-3">
+            <div class="rt-slider" id="rtSlider" data-autoplay="true" data-interval="6500" aria-roledescription="幻灯片">
+              <div class="rt-stage" id="rtStage">
+                <button class="rt-nav rt-prev" type="button" aria-label="上一张"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="rt-nav rt-next" type="button" aria-label="下一张"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="rt-progress"><span></span></div>
+                <div class="rt-caption">
+                  <h3 class="rt-caption-title"></h3>
+                  <p class="rt-caption-text"></p>
+                </div>
+              </div>
+              <div class="rt-tabs" id="rtTabs" role="tablist" aria-label="幻灯片缩略图导航"></div>
+              <script type="application/json" id="rtSlidesFallback">
+{
+  "autoplay": true,
+  "interval": 6500,
+  "pauseOnHover": true,
+  "slides": [
+    {
+      "type": "video",
+      "src": "assets/realtts-ad.mp4",
+      "poster": "assets/realtts-ad-mp4.webp",
+      "thumb": "assets/realtts-ad-mp4.webp",
+      "title": "RealTTS",
+      "caption": "实时听懂需求，准确表达方案，当场推进报价。"
+    },
+    {
+      "type": "video",
+      "src": "assets/realtts-show.mp4",
+      "thumb": "assets/realtts-show.webp",
+      "title": "实时演示",
+      "caption": "RealTTS操作实时演示"
+    }
+  ]
+}
+              </script>
+            </div>
           </div>
         </div>
       </div>
@@ -924,9 +993,9 @@
     };
 
     const videoTranslations={
-      'zh-CN':{watchAd:'看看它如何工作'},
-      'zh-TW':{watchAd:'看看它如何運作'},
-      'en':{watchAd:'See how it works'},
+      'zh-CN':{watchAd:'看看它如何工作',videoEyebrow:'不只是广告片，更是真实场景。',videoTitle:'把语言变成订单',videoBody:'从广告片到客户会议、微信洽谈与自动纪要，RealTTS 覆盖你每天都在用的沟通场景。'},
+      'zh-TW':{watchAd:'看看它如何運作',videoEyebrow:'不只是廣告片，更是真實場景。',videoTitle:'把語言變成訂單',videoBody:'從廣告片到客戶會議、微信洽談與自動紀要，RealTTS 涵蓋你每天在用的溝通場景。'},
+      'en':{watchAd:'See how it works',videoEyebrow:'More than an ad — real scenarios.',videoTitle:'Turn language into orders',videoBody:'From ad campaigns to client meetings, WeChat negotiations and auto-generated minutes, RealTTS covers every communication scenario you use daily.'},
       'ja':{watchAd:'広告動画を見る',videoEyebrow:'RealTTS が越境コミュニケーションを変える',videoTitle:'一本の動画で、<br>新しい会話を知る。',videoBody:'広告動画で双方向翻訳、活用シーン、製品価値を紹介できます。',videoPlaceholderTitle:'RealTTS 広告動画',videoPlaceholderBody:'assets/realtts-ad.mp4 に動画を配置してください'},
       'ko':{watchAd:'광고 영상 보기',videoEyebrow:'RealTTS가 글로벌 소통을 바꾸는 방법',videoTitle:'한 편의 영상으로<br>새로운 소통을 만나보세요.',videoBody:'광고 영상으로 양방향 번역, 활용 장면과 제품 가치를 소개합니다.',videoPlaceholderTitle:'RealTTS 광고 영상',videoPlaceholderBody:'assets/realtts-ad.mp4에 영상을 넣으세요'},
       'ru':{watchAd:'Смотреть видео',videoEyebrow:'Как RealTTS меняет международное общение',videoTitle:'Одно видео.<br>Новый способ общения.',videoBody:'Видео показывает двусторонний перевод, сценарии и ценность продукта.',videoPlaceholderTitle:'Рекламное видео RealTTS',videoPlaceholderBody:'Добавьте видео в assets/realtts-ad.mp4'},
@@ -1133,13 +1202,150 @@
       copyToast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>{copyToast.classList.remove('show');icon.innerHTML='<i class="fa-regular fa-copy"></i>';icon.classList.remove('bg-[#07c160]','text-white')},1800);
     }));
 
-    const adVideo=document.getElementById('adVideo'),videoPlayButton=document.getElementById('videoPlayButton');
-    function syncVideoPlayButton(){videoPlayButton.classList.toggle('is-hidden',!adVideo.paused&&!adVideo.ended);}
-    videoPlayButton.addEventListener('click',async()=>{try{if(adVideo.paused||adVideo.ended){if(adVideo.ended)adVideo.currentTime=0;await adVideo.play();}else adVideo.pause();}catch(error){console.warn('Video playback could not start.',error);}syncVideoPlayButton();});
-    adVideo.addEventListener('play',syncVideoPlayButton);
-    adVideo.addEventListener('pause',syncVideoPlayButton);
-    adVideo.addEventListener('ended',syncVideoPlayButton);
-    adVideo.addEventListener('error',()=>videoPlayButton.classList.remove('is-hidden'));
+    /* ===== RealTTS 幻灯片（由 slides.json 控制，失败回退内联 JSON） ===== */
+    (function(){
+      const slider=document.getElementById('rtSlider');
+      if(!slider) return;
+      const stage=document.getElementById('rtStage'), tabsWrap=document.getElementById('rtTabs');
+      if(!stage||!tabsWrap) return;
+      const CAPTION_TITLE=stage.querySelector('.rt-caption-title');
+      const CAPTION_TEXT=stage.querySelector('.rt-caption-text');
+      const CAPTION=stage.querySelector('.rt-caption');
+      const PROGRESS=stage.querySelector('.rt-progress > span');
+      const PREV=stage.querySelector('.rt-prev');
+      const NEXT=stage.querySelector('.rt-next');
+
+      let slides=[], current=0;
+      let autoplay=slider.dataset.autoplay!=='false';
+      let interval=parseInt(slider.dataset.interval,10)||6500;
+      let pauseOnHover=true;
+      let elapsed=0, lastTs=null, rafId=null, paused=false, videoPlaying=false;
+
+      function applyConfig(cfg){
+        if(!cfg) return;
+        if(Array.isArray(cfg.slides)) slides=cfg.slides;
+        if(typeof cfg.autoplay==='boolean') autoplay=cfg.autoplay;
+        if(cfg.interval) interval=cfg.interval;
+        if(typeof cfg.pauseOnHover==='boolean') pauseOnHover=cfg.pauseOnHover;
+      }
+      const playBtnOf=i=>stage.querySelector('.rt-slide[data-index="'+i+'"] .rt-play');
+
+      function build(){
+        stage.querySelectorAll('.rt-slide').forEach(n=>n.remove());
+        tabsWrap.innerHTML='';
+        slides.forEach((s,i)=>{
+          const slide=document.createElement('div');
+          slide.className='rt-slide'+(i===0?' is-active':'');
+          slide.dataset.index=i;
+          if(s.type==='video'){
+            const v=document.createElement('video');
+            v.src=s.src; if(s.poster) v.poster=s.poster;
+            v.controls=true; v.playsInline=true; v.preload='metadata';
+            v.setAttribute('aria-label',s.title||'视频');
+            v.addEventListener('play',()=>{ videoPlaying=true; const b=playBtnOf(i); if(b) b.classList.add('is-hidden'); });
+            v.addEventListener('pause',()=>{ videoPlaying=false; const b=playBtnOf(i); if(b) b.classList.remove('is-hidden'); });
+            v.addEventListener('ended',()=>{ videoPlaying=false; const b=playBtnOf(i); if(b) b.classList.remove('is-hidden'); });
+            v.addEventListener('error',()=>{ const b=playBtnOf(i); if(b) b.classList.remove('is-hidden'); });
+            slide.appendChild(v);
+            const btn=document.createElement('button');
+            btn.type='button'; btn.className='rt-play';
+            btn.setAttribute('aria-label','播放 '+(s.title||'视频'));
+            btn.innerHTML='<span class="rt-play-btn" aria-hidden="true"></span>';
+            btn.addEventListener('click',()=>{ try{ v.play(); }catch(e){ console.warn('Video playback could not start.',e); } });
+            slide.appendChild(btn);
+          } else {
+            const img=document.createElement('img');
+            img.src=s.src; img.alt=s.title||''; img.loading=(i===0?'eager':'lazy');
+            slide.appendChild(img);
+          }
+          stage.insertBefore(slide, stage.firstChild);
+
+          const tab=document.createElement('button');
+          tab.type='button'; tab.className='rt-tab'+(i===0?' is-active':'');
+          tab.setAttribute('role','tab'); tab.dataset.index=i;
+          tab.setAttribute('aria-selected', i===0?'true':'false');
+          tab.setAttribute('aria-label', s.title||('第 '+(i+1)+' 张'));
+          tab.innerHTML='<img src="'+(s.thumb||s.src)+'" alt="'+(s.title||'')+'" loading="lazy" /><span class="rt-tab-title">'+(s.title||'')+'</span>';
+          tab.addEventListener('click',()=>goTo(i,true));
+          tabsWrap.appendChild(tab);
+        });
+        updateCaption();
+        if(autoplay && slides.length>1) startLoop();
+      }
+
+      function updateCaption(){
+        const s=slides[current]||{};
+        if(CAPTION_TITLE) CAPTION_TITLE.textContent=s.title||'';
+        if(CAPTION_TEXT) CAPTION_TEXT.textContent=s.caption||'';
+        if(CAPTION){
+          CAPTION.classList.remove('is-ready');
+          void CAPTION.offsetWidth;
+          requestAnimationFrame(()=>CAPTION.classList.add('is-ready'));
+        }
+      }
+
+      function goTo(i,userInitiated){
+        i=(i+slides.length)%slides.length;
+        if(i===current && !userInitiated) return;
+        const prevSlide=stage.querySelector('.rt-slide[data-index="'+current+'"]');
+        if(prevSlide){
+          const pv=prevSlide.querySelector('video');
+          if(pv && !pv.paused){ try{ pv.pause(); }catch(e){} }
+          const pb=prevSlide.querySelector('.rt-play');
+          if(pb) pb.classList.remove('is-hidden');
+        }
+        stage.querySelectorAll('.rt-slide').forEach(s=>s.classList.remove('is-active'));
+        const next=stage.querySelector('.rt-slide[data-index="'+i+'"]');
+        if(next) next.classList.add('is-active');
+        tabsWrap.querySelectorAll('.rt-tab').forEach(t=>{
+          const on=+t.dataset.index===i;
+          t.classList.toggle('is-active',on);
+          t.setAttribute('aria-selected', on?'true':'false');
+        });
+        current=i;
+        updateCaption();
+        elapsed=0;
+        if(PROGRESS) PROGRESS.style.width='0%';
+      }
+
+      function loop(ts){
+        if(lastTs==null) lastTs=ts;
+        const dt=ts-lastTs; lastTs=ts;
+        if(autoplay && !paused && !videoPlaying && slides.length>1){
+          elapsed+=dt;
+          const p=Math.min(elapsed/interval,1);
+          if(PROGRESS) PROGRESS.style.width=(p*100)+'%';
+          if(elapsed>=interval){ elapsed=0; goTo(current+1,false); }
+        }
+        rafId=requestAnimationFrame(loop);
+      }
+      function startLoop(){ if(rafId) return; lastTs=null; rafId=requestAnimationFrame(loop); }
+
+      if(PREV) PREV.addEventListener('click',()=>goTo(current-1,true));
+      if(NEXT) NEXT.addEventListener('click',()=>goTo(current+1,true));
+      if(pauseOnHover){
+        slider.addEventListener('mouseenter',()=>{ paused=true; });
+        slider.addEventListener('mouseleave',()=>{ paused=false; });
+      }
+      document.addEventListener('keydown',(e)=>{
+        const ae=document.activeElement;
+        if(ae && (ae.tagName==='INPUT'||ae.tagName==='TEXTAREA'||ae.isContentEditable)) return;
+        if(e.key!=='ArrowLeft' && e.key!=='ArrowRight') return;
+        const rect=slider.getBoundingClientRect();
+        if(rect.top>=window.innerHeight || rect.bottom<=0) return;
+        e.preventDefault();
+        goTo(current+(e.key==='ArrowRight'?1:-1),true);
+      });
+
+      const fb=document.getElementById('rtSlidesFallback');
+      function load(){
+        fetch('slides.json',{cache:'no-store'})
+          .then(r=>{ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+          .then(cfg=>{ applyConfig(cfg); build(); })
+          .catch(()=>{ console.warn('slides.json 加载失败，使用内联备用数据。'); try{ applyConfig(JSON.parse(fb.textContent)); }catch(e){ console.error('幻灯片数据解析失败。',e); } build(); });
+      }
+      load();
+    })();
 
     // Partner logos marquee
     const partnerLogos=[

@@ -1,0 +1,22 @@
+{
+  "autoplay": true,
+  "interval": 6500,
+  "pauseOnHover": true,
+  "slides": [
+    {
+      "type": "video",
+      "src": "assets/realtts-ad.mp4",
+      "poster": "assets/realtts-ad-mp4.webp",
+      "thumb": "assets/realtts-ad-mp4.webp",
+      "title": "RealTTS",
+      "caption": "实时听懂需求，准确表达方案，当场推进报价。"
+    },
+    {
+      "type": "video",
+      "src": "assets/realtts-show.mp4",
+      "thumb": "assets/realtts-show.webp",
+      "title": "实时演示",
+      "caption": "RealTTS操作实时演示"
+    }
+  ]
+}
