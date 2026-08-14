@@ -4,12 +4,28 @@
   "pauseOnHover": true,
   "slides": [
     {
+      "type": "image",
+      "src": "assets/realtts-package.webp",
+      "poster": "assets/realtts-package.webp",
+      "thumb": "assets/realtts-package.webp",
+      "title": "RealTTS",
+      "caption": "实时听懂需求，准确表达方案，当场推进报价。"
+    },
+    {
+      "type": "image",
+      "src": "assets/sectionbg2.webp",
+      "poster": "assets/sectionbg2.webp",
+      "thumb": "assets/sectionbg2.webp",
+      "title": "RealTTS",
+      "caption": "实时听懂需求，准确表达方案，当场推进报价。"
+    },
+    {
       "type": "video",
       "src": "assets/realtts-ad.mp4",
       "poster": "assets/realtts-ad-mp4.webp",
       "thumb": "assets/realtts-ad-mp4.webp",
       "title": "RealTTS",
-      "caption": "实时听懂需求，准确表达方案，当场推进报价。"
+      "caption": ""
     },
     {
       "type": "video",

@@ -1,1 +1,4 @@
-start_server.bat
+*.bat
+*.bak
+*.zip
+*.rar
