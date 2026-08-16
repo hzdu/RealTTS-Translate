@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://realtts.live/sitemap.xml
