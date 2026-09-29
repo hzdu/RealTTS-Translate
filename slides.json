@@ -25,14 +25,28 @@
       "poster": "assets/realtts-ad-mp4.webp",
       "thumb": "assets/realtts-ad-mp4.webp",
       "title": "RealTTS",
-      "caption": ""
+      "caption": "实时听懂需求，准确表达方案，当场推进报价。"
     },
     {
       "type": "video",
       "src": "assets/realtts-show.mp4",
       "thumb": "assets/realtts-show.webp",
-      "title": "实时演示",
-      "caption": "RealTTS操作实时演示"
+      "title": "RealTTS操作演示",
+      "caption": "RealTTS操作演示"
+    },
+    {
+      "type": "video",
+      "src": "assets/realtts-ad2.mp4",
+      "thumb": "assets/realtts-ad2-mp4.webp",
+      "title": "RealTTS Showcase",
+      "caption": "RealTTS案例"
+    },
+    {
+      "type": "video",
+      "src": "assets/realtts-ad3.mp4",
+      "thumb": "assets/realtts-ad3-mp4.webp",
+      "title": "RealTTS Showcase",
+      "caption": "RealTTS案例"
     }
   ]
 }

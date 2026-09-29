@@ -2,3 +2,5 @@
 *.bak
 *.zip
 *.rar
+.dsh-edit-review.json
+.dsh-edit-review-archive.json
