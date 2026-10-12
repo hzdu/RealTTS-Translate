@@ -1671,12 +1671,12 @@
   <script type="application/json" id="contactPresets">
   {
     "tabs": [
-      { "id": "default", "name": { "zh-CN": "客服 01", "default": "Agent 01" }, "email": "hrym7499@agent.qq.com", "qq": "14681797", "whatsapp": "", "qrcode": "assets/wechat.webp" },
-      { "id": "1", "name": { "zh-CN": "客服 02", "default": "Agent 02" }, "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat1.webp" },
-      { "id": "2", "name": { "zh-CN": "客服 03", "default": "Agent 03" }, "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat2.webp" },
-      { "id": "3", "name": { "zh-CN": "客服 04", "default": "Agent 04" }, "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat3.webp" },
-      { "id": "4", "name": { "zh-CN": "客服 05", "default": "Agent 05" }, "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat4.webp" },
-      { "id": "5", "name": { "zh-CN": "客服 06", "default": "Agent 06" }, "email": "297100155@qq.com", "qq": "", "whatsapp": "8613757952434", "qrcode": "assets/wechat5.webp" }
+      { "id": "default", "visible": true, "name": { "zh-CN": "客服 01", "default": "Agent 01" }, "email": "hrym7499@agent.qq.com", "qq": "14681797", "whatsapp": "", "qrcode": "assets/wechat.webp" },
+      { "id": "1", "visible": true, "name": { "zh-CN": "客服 02", "default": "Agent 02" }, "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat1.webp" },
+      { "id": "2", "visible": true, "name": { "zh-CN": "客服 03", "default": "Agent 03" }, "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat2.webp" },
+      { "id": "3", "visible": true, "name": { "zh-CN": "客服 04", "default": "Agent 04" }, "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat3.webp" },
+      { "id": "4", "visible": true, "name": { "zh-CN": "客服 05", "default": "Agent 05" }, "email": "plassmanbucholz628@hotmail.com", "qq": "", "whatsapp": "447845976543", "qrcode": "assets/webchat4.webp" },
+      { "id": "5", "visible": true, "name": { "zh-CN": "客服 06", "default": "Agent 06" }, "email": "297100155@qq.com", "qq": "", "whatsapp": "8613757952434", "qrcode": "assets/wechat5.webp" }
     ]
   }
   </script>
@@ -1942,7 +1942,7 @@
       var list = [];
       function push(id, t){
         t = t || {};
-        list.push({ id: String(id), name: t.name, email: t.email || '', qq: String(t.qq || ''), whatsapp: String(t.whatsapp || ''), qrcode: t.qrcode || '' });
+        list.push({ id: String(id), visible: t.visible !== false, name: t.name, email: t.email || '', qq: String(t.qq || ''), whatsapp: String(t.whatsapp || ''), qrcode: t.qrcode || '' });
       }
       if (data && Array.isArray(data.tabs)) {
         data.tabs.forEach(function(t, i){ if (t) push(t.id === undefined || t.id === null ? (i + 1) : t.id, t); });
@@ -2088,6 +2088,14 @@
         if (!contactTabs.length || !contactTabsEl) return;
         var params = new URLSearchParams(location.search);
         var reqId = params.get('id');
+        // 带 id= 访问：只显示对应的客服；不带 id= 访问：隐藏 visible:false 的客服
+        var target = reqId ? contactTabs.filter(function(t){ return t.id === reqId; })[0] : null;
+        if (target) {
+          contactTabs = [target];
+        } else {
+          var shown = contactTabs.filter(function(t){ return t.visible !== false; });
+          if (shown.length) contactTabs = shown;
+        }
         var activeId = contactTabs[0].id;
         if (reqId) { for (var i = 0; i < contactTabs.length; i++) { if (contactTabs[i].id === reqId) { activeId = reqId; break; } } }
         var override = {};
