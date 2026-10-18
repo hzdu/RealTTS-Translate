@@ -1837,7 +1837,7 @@
       b.innerHTML=`<span>${data.label}</span><i class="fa-solid fa-check lang-check"></i>`;
       b.dataset.code=code; b.addEventListener('click',()=>setLanguage(code)); langMenu.appendChild(b);
     });
-    const FX_LIST=[{code:'USD',sym:'$',name:'美元'},{code:'CNY',sym:'¥',name:'人民币'},{code:'AUD',sym:'AUD $',name:'澳元'},{code:'EUR',sym:'€',name:'欧元'},{code:'GBP',sym:'£',name:'英镑'},{code:'JPY',sym:'JP¥',name:'日元'},{code:'CAD',sym:'CAD $',name:'加元'}];
+    const FX_LIST=[{code:'USD',sym:'$',short:'$',name:'美元'},{code:'CNY',sym:'¥',short:'¥',name:'人民币'},{code:'AUD',sym:'AUD $',short:'$',name:'澳元'},{code:'EUR',sym:'€',short:'€',name:'欧元'},{code:'GBP',sym:'£',short:'£',name:'英镑'},{code:'JPY',sym:'JP¥',short:'¥',name:'日元'},{code:'CAD',sym:'CAD $',short:'$',name:'加元'}];
     const FX_FALLBACK={USD:1,CNY:6.7029,AUD:1.4398,EUR:0.8896,GBP:0.7508,JPY:158.0,CAD:1.4147};
     const FX_CACHE_KEY='realtts-fx', CUR_KEY='realtts-cur', FX_TTL=6*3600*1000;
     let fxRates=Object.assign({},FX_FALLBACK), fxDisplay='USD', fxUserPicked=false;
@@ -1860,14 +1860,15 @@
     function syncFxSwitch(){
       const box=document.getElementById('fxSwitch'); if(!box) return;
       box.querySelectorAll('.fx-btn').forEach(b=>{ const on=b.dataset.cur===fxDisplay; b.classList.toggle('active',on); b.setAttribute('aria-selected',on?'true':'false'); });
+      const fxItem=x=>(FX_LIST.find(t=>t.code===x)||{});
       const symEl=box.querySelector('.fx-cur-sym'), codeEl=box.querySelector('.fx-cur-code');
-      if(symEl) symEl.textContent=fxSym(fxDisplay);
-      if(codeEl){ const dup=fxSym(fxDisplay).includes(fxDisplay); codeEl.textContent=fxDisplay; codeEl.style.display=dup?'none':''; }
+      if(symEl) symEl.textContent=fxItem(fxDisplay).short||fxSym(fxDisplay);
+      if(codeEl) codeEl.textContent=fxDisplay;
     }
     (function buildFxSwitch(){
       const box=document.getElementById('fxSwitch'); if(!box) return;
       const menu=document.getElementById('fxMenu'), trigger=document.getElementById('fxTrigger');
-      FX_LIST.forEach(x=>{ const b=document.createElement('button'); b.type='button'; b.className='fx-btn'; b.dataset.cur=x.code; b.setAttribute('role','option'); b.title=x.name; b.innerHTML='<span class="fx-sym">'+x.sym+'</span><span class="fx-code"'+(x.sym.includes(x.code)?' style="display:none"':'')+'>'+x.code+'</span><i class="fa-solid fa-check fx-check" aria-hidden="true"></i>'; b.addEventListener('click',()=>{ fxDisplay=x.code; fxUserPicked=true; try{localStorage.setItem(CUR_KEY,x.code);}catch(e){} setLanguage(document.documentElement.lang); closeFxMenu(); }); menu.appendChild(b); });
+      FX_LIST.forEach(x=>{ const b=document.createElement('button'); b.type='button'; b.className='fx-btn'; b.dataset.cur=x.code; b.setAttribute('role','option'); b.title=x.name; b.innerHTML='<span class="fx-sym">'+x.short+'</span><span class="fx-code">'+x.code+'</span><i class="fa-solid fa-check fx-check" aria-hidden="true"></i>'; b.addEventListener('click',()=>{ fxDisplay=x.code; fxUserPicked=true; try{localStorage.setItem(CUR_KEY,x.code);}catch(e){} setLanguage(document.documentElement.lang); closeFxMenu(); }); menu.appendChild(b); });
       trigger.addEventListener('click',e=>{ e.stopPropagation(); const open=box.classList.toggle('open'); trigger.setAttribute('aria-expanded',open?'true':'false'); });
       document.addEventListener('click',closeFxMenu);
       document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeFxMenu(); });
@@ -2170,6 +2171,7 @@
         }
         renderContactTabs();
         selectContactTab(activeId, { first:true });
+        if (target) { const block=document.querySelector('.contact-tabs-block'); if(block) block.style.display='none'; }
       } catch (e) { console.warn('applyContactParams error', e); }
     }
     applyContactParams();
