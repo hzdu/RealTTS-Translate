@@ -1,0 +1,14 @@
+{
+  "name": "build",
+  "version": "1.0.0",
+  "description": "",
+  "main": "i18n.mjs",
+  "scripts": {
+    "build": "node i18n.mjs"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "linkedom": "^0.18.11"
+  }
+}
