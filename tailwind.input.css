@@ -1,0 +1,18 @@
+@import "tailwindcss" source(none);
+@source "./index.html";
+@source "./en/index.html";
+@source "./ja/index.html";
+@source "./ko/index.html";
+@source "./ru/index.html";
+@source "./es/index.html";
+@source "./pt/index.html";
+@source "./ar/index.html";
+@source "./zh-TW/index.html";
+
+@theme {
+  --color-apple-blue: #0071e3;
+  --color-apple-link: #0066cc;
+  --color-apple-light: #f5f5f7;
+  --color-apple-ink: #1d1d1f;
+  --font-sans: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}

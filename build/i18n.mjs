@@ -153,6 +153,48 @@ function absolutizeRelativeUrls(doc) {
   }
 }
 
+// 把页面内嵌 JS 词典裁剪到只剩当前语言：languages 保留 9 项（其余语言仅 label/dir 供语言菜单与评价标签用），
+// 10 个文案词典仅保留 { code: {...} } 一项。页面加载后 setLanguage 只会收到当前页语言，其余为死数据。
+// 每页可省约 190KB。源 index.html 保留全量词典（i18n.mjs 的翻译数据源）。
+function pruneDictionaries(html, code) {
+  const dicts = loadPacks(html); // 仅用于解析对象边界
+  let out = html;
+  for (const name of ['languages', ...DICTS]) {
+    const m = new RegExp(`const\\s+${name}\\s*=\\s*`).exec(out);
+    if (!m) continue;
+    const start = out.indexOf('{', m.index + m[0].length);
+    let depth = 0, quote = null, line = false, block = false;
+    let i = start;
+    for (; i < out.length; i++) {
+      const c = out[i], n = out[i + 1];
+      if (line) { if (c === '\n') line = false; continue; }
+      if (block) { if (c === '*' && n === '/') { block = false; i++; } continue; }
+      if (quote) { if (c === '\\') { i++; continue; } if (c === quote) quote = null; continue; }
+      if (c === '/' && n === '/') { line = true; i++; continue; }
+      if (c === '/' && n === '*') { block = true; i++; continue; }
+      if (c === '"' || c === "'" || c === '`') { quote = c; continue; }
+      if (c === '{') depth++;
+      else if (c === '}') { depth--; if (depth === 0) { i++; break; } }
+    }
+    const literal = out.slice(start, i);
+    let parsed;
+    try { parsed = vm.runInNewContext(`(${literal})`); } catch { continue; }
+
+    let replacement;
+    if (name === 'languages') {
+      const slim = {};
+      for (const [lang, pack] of Object.entries(parsed)) {
+        slim[lang] = lang === code ? pack : { label: pack.label, dir: pack.dir };
+      }
+      replacement = JSON.stringify(slim);
+    } else {
+      replacement = JSON.stringify({ [code]: parsed[code] || parsed.en || {} });
+    }
+    out = out.slice(0, start) + replacement + out.slice(i);
+  }
+  return out;
+}
+
 function rewriteCssAssetPaths(html) {
   return html.replace(/url\(\s*(['"]?)(?:\.\/)?\/?assets\//g, 'url($1/assets/');
 }
@@ -282,8 +324,18 @@ for (const { code, pack } of packs) {
   localizeHead(document, code);
   localizeStructuredData(document, code);
 
+  // 语言按钮标签：构建时本地化（否则爬虫看到的是源文件中文"简体中文"）
+  const langLabelEl = document.querySelector('#langLabel');
+  if (langLabelEl && pack.label) langLabelEl.textContent = pack.label;
+  // 注意：hero 演示对话的"原文"（#heroLeftOrig）保留中文是产品设计——演示场景是
+  // "中文卖家说中文 → 客户听到自己语言"，译文侧已由词典本地化，原文不该翻译。
+
   let html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML + '\n';
   if (code !== 'zh-CN') html = rewriteCssAssetPaths(html);
+  // 关键：zh-CN 输出路径 = 源文件路径（ROOT/index.html）。若对 zh-CN 也 prune，
+  // 会把裁剪后的词典写回源文件，导致下次构建丢失 8 种语言翻译数据。
+  // 因此 zh-CN 输出保留全量词典；只有子目录页面做 prune。
+  if (code !== 'zh-CN') html = pruneDictionaries(html, code);
 
   const outDir = code === 'zh-CN' ? ROOT : path.join(ROOT, code);
   fs.mkdirSync(outDir, { recursive: true });

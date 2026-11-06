@@ -2,8 +2,8 @@
 *.bak
 *.zip
 *.rar
+.workbuddy
 .dsh-edit-review.json
 .dsh-edit-review-archive.json
-build/node_modules/
-
-!build-i18n.bat
+build/
+node_modules/
