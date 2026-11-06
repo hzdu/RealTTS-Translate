@@ -1830,7 +1830,7 @@
     (function buildFxSwitch(){
       const box=document.getElementById('fxSwitch'); if(!box) return;
       const menu=document.getElementById('fxMenu'), trigger=document.getElementById('fxTrigger');
-      FX_LIST.forEach(x=>{ const b=document.createElement('button'); b.type='button'; b.className='fx-btn'; b.dataset.cur=x.code; b.setAttribute('role','option'); b.title=x.name; b.innerHTML='<span class="fx-sym">'+x.short+'</span><span class="fx-code">'+x.code+'</span><i class="fa-solid fa-check fx-check" aria-hidden="true"></i>'; b.addEventListener('click',()=>{ fxDisplay=x.code; fxUserPicked=true; try{localStorage.setItem(CUR_KEY,x.code);}catch(e){} setLanguage(document.documentElement.lang); closeFxMenu(); }); menu.appendChild(b); });
+      FX_LIST.forEach(x=>{ const b=document.createElement('button'); b.type='button'; b.className='fx-btn'; b.dataset.cur=x.code; b.setAttribute('role','option'); b.title=x.name; b.innerHTML='<span class="fx-sym">'+x.short+'</span><span class="fx-code">'+x.code+'</span><i class="fa-solid fa-check fx-check" aria-hidden="true"></i>'; b.addEventListener('click',()=>{ fxDisplay=x.code; fxUserPicked=true; try{localStorage.setItem(CUR_KEY,x.code);}catch(e){} applyPricingCurrency(document.documentElement.getAttribute('data-page-lang')||document.documentElement.lang); closeFxMenu(); }); menu.appendChild(b); });
       trigger.addEventListener('click',e=>{ e.stopPropagation(); const open=box.classList.toggle('open'); trigger.setAttribute('aria-expanded',open?'true':'false'); });
       document.addEventListener('click',closeFxMenu);
       document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeFxMenu(); });
@@ -1948,7 +1948,10 @@
     if(_urlLang && languages[_urlLang] && _urlLang!==_pageLang){
       location.replace((_urlLang==='zh-CN'?'/':'/'+_urlLang+'/')+location.hash);
     } else {
-      setLanguage(_urlLang && languages[_urlLang] ? _urlLang : (_pageLang && languages[_pageLang] ? _pageLang : detectBrowserLanguage()));
+      /* 页面语言以 URL/构建时语言为准（_pageLang），不再按浏览器语言动态改写页面文案：
+         1) 避免用户语言选择被浏览器语言覆盖（切货币等操作后语言栏跳回简体中文的根因）
+         2) /en/ 等静态页渲染与 URL 一致的内容，对 SEO 更友好 */
+      setLanguage(_pageLang && languages[_pageLang] ? _pageLang : 'en');
     }
 
     /* ===== 联系客服 TAB 切换 ===== */
