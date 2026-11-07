@@ -2,3 +2,8 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.realtts.live/sitemap.xml
+
+# LLM-readable plain-text versions (https://llmstxt.org):
+# https://www.realtts.live/llms.txt
+# https://www.realtts.live/llms-full.txt
+# Localized copies live at /<lang>/llms.txt and are declared in each page's head.

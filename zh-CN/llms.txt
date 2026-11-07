@@ -1,0 +1,62 @@
+# RealTTS
+
+> RealTTS 是双向实时同声传译软件，支持微信、WhatsApp、LINE、Zoom、Telegram 等平台双向实时语音翻译，客户无需安装 App。让跨境沟通不再因语言流失订单。
+
+双向语音实时识别、翻译与自然播报。你专注谈判、选品和客户关系，RealTTS 负责语言。
+
+RealTTS 通过虚拟音频设备工作。只要你的聊天或通话工具允许选择麦克风或扬声器——例如微信、WhatsApp、LINE、Zoom、Teams、Skype 等——就能直接实现实时双向翻译，无需让客户安装任何新软件。
+
+响应为秒级，双向翻译几乎同步完成，对话节奏自然，客户不会感到在等待翻译。
+
+## 支持语言
+
+- 支持 13 种商务语言互译，覆盖主流跨境贸易市场，并将持续增加。
+- 界面支持 9 种语言：简体中文、繁體中文、English、日本語、한국어、Русский、Español、Português、العربية。
+
+## 平台与兼容性
+
+- 运行于 Windows 10+, macOS，并支持手机端随时随地双向实时对话。
+- 微信 · WhatsApp · LINE · Zoom · Teams · Skype —— 支持音频设备选择，即可无缝使用。
+
+## 价格
+
+按设备按月计费，随时升级。价格已含实时双向翻译、记录导出与使用支持。
+
+- **月付**: $20 / 月 / 台
+- **季付**: $57 / 季 / 台
+- **年付**: $230 / 年 / 台
+- 每个基础套餐默认只赠送 1 间多人会议室房间。如果有多位业务员需要同时使用多个房间，请在购买时说明：额外房间 $5 / 月 / 间。
+
+## 免费试用 RealTTS
+
+- 零成本体验双向实时语音翻译。添加微信即可领取试用资格，支持微信 / WhatsApp / LINE 多平台。
+- 无需信用卡 · 1 对 1 配置指导
+
+## 购买条款
+
+- 免责声明：由于虚拟产品的特殊性。购买正式版后不接受任何理由的退款。
+
+## 联系
+
+- [销售邮箱](mailto:hrym7499@agent.qq.com): 售前咨询、免费试用与授权购买，服务全球客户。
+- 微信扫码联系: 备注“RealTTS”，方便快速处理
+
+## 官方链接
+
+- [首页](https://www.realtts.live/): 支持微信、WhatsApp、LINE、Zoom 等平台双向实时语音翻译，客户无需安装 App。月付 $20/台起，免费试用。
+- [完整产品说明（Markdown）](https://www.realtts.live/zh-CN/llms-full.txt): 纯文本形式的功能、使用流程、定价、适用场景、购买条款与完整常见问题。
+
+## 多语言版本
+
+- [繁體中文](https://www.realtts.live/zh-TW/llms.txt): RealTTS 即時同步口譯｜跨境雙向即時語音翻譯軟體
+- [English](https://www.realtts.live/en/llms.txt): RealTTS Real-Time Interpretation | Two-Way Live Voice Translation
+- [日本語](https://www.realtts.live/ja/llms.txt): RealTTS リアルタイム同時通訳｜双方向ライブ音声翻訳
+- [한국어](https://www.realtts.live/ko/llms.txt): RealTTS 실시간 동시통역 | 양방향 라이브 음성 번역
+- [Русский](https://www.realtts.live/ru/llms.txt): RealTTS — синхронный перевод в реальном времени | Двусторонний голосовой перевод
+- [Español](https://www.realtts.live/es/llms.txt): RealTTS — interpretación simultánea en tiempo real | Traducción de voz bidireccional
+- [Português](https://www.realtts.live/pt/llms.txt): RealTTS — interpretação simultânea em tempo real | Tradução de voz bidirecional
+- [العربية](https://www.realtts.live/ar/llms.txt): RealTTS — ترجمة فورية متزامنة | ترجمة صوتية ثنائية الاتجاه
+
+## Optional
+
+- [站点地图](https://www.realtts.live/sitemap.xml): 全部 9 个语言版本及 hreflang 交替链接。

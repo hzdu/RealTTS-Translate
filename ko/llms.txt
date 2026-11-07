@@ -1,0 +1,62 @@
+# RealTTS
+
+> RealTTS는 양방향 실시간 동시통역 소프트웨어입니다. WeChat, WhatsApp, LINE, Zoom, Telegram 등에서 음성을 실시간 번역하며 고객은 앱을 설치할 필요가 없습니다. 언어 장벽 때문에 주문을 놓치지 마세요.
+
+양방향 음성 인식, 번역, 자연스러운 음성 출력을 실시간으로 제공합니다.
+
+RealTTS는 가상 오디오 장치를 통해 작동합니다. 마이크나 스피커를 선택할 수 있는 채팅·통화 앱이라면 — WeChat, WhatsApp, LINE, Zoom, Teams, Skype 등 — 고객 측에 아무것도 설치하지 않고 실시간 양방향 번역이 가능합니다.
+
+응답이 초 단위로 이루어지고 양방향 번역이 거의 동시에 완료되어 대화가 자연스럽게 이어지며, 상대가 번역을 기다린다고 느끼지 않습니다.
+
+## 지원 언어
+
+- 13개 비즈니스 언어를 번역하며 주요 글로벌 무역 시장을 커버하고, 계속 추가될 예정.
+- 인터페이스는 9개 언어 지원: 简体中文, 繁體中文, English, 日本語, 한국어, Русский, Español, Português, العربية.
+
+## 플랫폼 및 호환성
+
+- Windows 10+, macOS에서 실행되며, 모바일에서도 어디서나 양방향 실시간 대화 가능.
+- WeChat · WhatsApp · LINE · Zoom · Teams · Skype — 오디오 장치 선택만 지원하면 바로 사용 가능합니다.
+
+## 가격
+
+기기별 월 정액, 언제든 업그레이드. 실시간 양방향 번역·기록 내보내기·지원이 포함됩니다.
+
+- **월간**: $20 / 월 / 기기
+- **분기**: $57 / 분기 / 기기
+- **연간**: $230 / 년 / 기기
+- 기본 요금제에는 다인 회의실이 1개만 포함됩니다. 여러 영업 담당자가 동시에 각각의 룸을 사용해야 한다면 구매 시 알려주세요: 추가 룸은 $5 / 월 / 룸입니다.
+
+## RealTTS 무료 체험
+
+- 비용 부담 없이 실시간 양방향 음성 번역을 체험하세요. WeChat에서 친구 추가하면 체험 자격을 받을 수 있습니다. WeChat, WhatsApp, LINE 지원.
+- 신용카드 불필요 · 1:1 설정 가이드
+
+## 구매 조건
+
+- 면책 조항: 가상 제품의 특성상 정식 버전 구매 후에는 어떠한 사유로도 환불되지 않습니다.
+
+## 문의
+
+- [영업 이메일](mailto:hrym7499@agent.qq.com): 구매 전 상담, 무료 체험 및 라이선스 구매. 전 세계 고객 지원.
+- WeChat으로 스캔: “RealTTS”라고 남겨주세요
+
+## 공식 링크
+
+- [홈페이지](https://www.realtts.live/ko/): WeChat, WhatsApp, LINE, Zoom 등에서 양방향 실시간 음성 번역. 고객 앱 설치 불필요. 월 20달러부터, 무료 체험 제공.
+- [전체 제품 설명(Markdown)](https://www.realtts.live/ko/llms-full.txt): 기능, 사용 절차, 요금, 활용 시나리오, 구매 조건 및 전체 FAQ를 일반 텍스트로 제공.
+
+## 언어별 버전
+
+- [简体中文](https://www.realtts.live/zh-CN/llms.txt): RealTTS 实时同声传译｜跨境双向实时语音翻译软件
+- [繁體中文](https://www.realtts.live/zh-TW/llms.txt): RealTTS 即時同步口譯｜跨境雙向即時語音翻譯軟體
+- [English](https://www.realtts.live/en/llms.txt): RealTTS Real-Time Interpretation | Two-Way Live Voice Translation
+- [日本語](https://www.realtts.live/ja/llms.txt): RealTTS リアルタイム同時通訳｜双方向ライブ音声翻訳
+- [Русский](https://www.realtts.live/ru/llms.txt): RealTTS — синхронный перевод в реальном времени | Двусторонний голосовой перевод
+- [Español](https://www.realtts.live/es/llms.txt): RealTTS — interpretación simultánea en tiempo real | Traducción de voz bidireccional
+- [Português](https://www.realtts.live/pt/llms.txt): RealTTS — interpretação simultânea em tempo real | Tradução de voz bidirecional
+- [العربية](https://www.realtts.live/ar/llms.txt): RealTTS — ترجمة فورية متزامنة | ترجمة صوتية ثنائية الاتجاه
+
+## Optional
+
+- [사이트맵](https://www.realtts.live/sitemap.xml): 9개 언어 버전과 hreflang 대체 링크.

@@ -1,0 +1,129 @@
+# RealTTS
+
+> RealTTS is two-way real-time interpretation software that translates live voice on WeChat, WhatsApp, LINE, Zoom, Telegram and more. Your clients install nothing. Never lose an order to a language barrier again.
+
+Two-way speech recognition, translation and natural voice output in real time. You focus on deals, products and relationships. RealTTS handles language.
+
+RealTTS works through a virtual audio device. As long as your chat or calling app lets you pick the microphone or speaker — WeChat, WhatsApp, LINE, Zoom, Teams, Skype and more — real-time two-way translation just works, with zero installation on the client side.
+
+Response time is in seconds and two-way translation is almost simultaneous, so the conversation flows naturally and your client never feels they are waiting for a translation.
+
+## Features
+
+- **Two-way routing. Less echo**: Independent audio paths send your translated voice to the client and their translated voice to your headphones—clear and separate.
+- **Let your voice speak another language naturally**: Create a personal voice profile so translated speech keeps your familiar character and expression.
+- **One-tap presets**: Set up popular communication tools quickly. Save language, voice and device profiles for every client and market.
+- **Every word, captured**: See source and translation live. Export the conversation after each call so no quote, request or commitment gets lost.
+
+## How it works
+
+1. **Connect audio**: Choose your microphone, headphones and calling app—or apply a preset.
+2. **Choose languages**: Set both languages and voices. Swap directions in one tap.
+3. **Start talking**: Press start and speak as usual. RealTTS handles the rest.
+
+## Supported languages
+
+- Translates 13 business languages, covering the major global trade markets, with more being added.
+- Interface available in 9 languages: 简体中文, 繁體中文, English, 日本語, 한국어, Русский, Español, Português, العربية.
+
+## Platform and compatibility
+
+- Runs on Windows 10+, macOS, and on mobile for two-way live conversation anywhere.
+- WeChat · WhatsApp · LINE · Zoom · Teams · Skype — if it lets you choose audio devices, it works seamlessly.
+
+## Pricing
+
+Billed monthly per device, upgrade anytime. Price includes live two-way translation, export and support.
+
+- **Monthly**: $20 / month / device
+- **Quarterly**: $57 / quarter / device
+- **Annual**: $230 / year / device
+- Every base plan includes 1 multi-person meeting room. If several salespeople need their own rooms at the same time, tell us when you buy: each extra room is $5 / month / room.
+- Two-way live voice translation
+- WeChat / WhatsApp / LINE multi-platform
+- Recording export & usage support
+- The first room is included. Each extra room is $5 / month; quarterly plans count 3 months and annual plans 12 months.
+
+## Try RealTTS for Free
+
+- Experience real-time two-way voice translation at no cost. Add us on WeChat to claim your free trial — works with WeChat, WhatsApp and LINE.
+- No credit card required · 1-on-1 setup guidance
+
+## Use cases
+
+- **In-person meetings**: Every word you say reaches the other side in their language. You speak Chinese, they hear theirs—no app to install on their end, zero friction face to face.
+- **Trade shows & exhibitions**: With limited time and many visitors on the floor, RealTTS lets you speak Chinese while they hear English and understand every question instantly, so you never miss a potential order.
+- **On-the-go mobile interpretation**: No computer or office required. Open RealTTS on your phone to hold two-way live conversations anywhere, turning spare moments into chances to close a deal.
+- Online chats: live two-way translation on WeChat / WhatsApp / LINE
+- Online meetings: instantly translate Zoom / Teams / Skype calls
+- In-person talks: works face to face without the other side installing anything
+- Trade shows: answer every question, never miss an order
+- Mobile live interpretation: carry real-time translation with you anywhere
+- Multi-person meeting rooms: create a room and translate live with everyone in it
+
+## FAQ
+
+### Which apps work with RealTTS?
+
+RealTTS works with common meeting, messaging and voice tools including WeChat, WhatsApp, Telegram, Skype, LINE and Zoom.
+
+### Does the client need to install it?
+
+No. You just turn on RealTTS on your side. Your client keeps using their usual apps—WeChat, WhatsApp and the like—with nothing to install.
+
+### Can I export meeting content?
+
+Yes. Both original and translated text appear live and can be exported after the meeting.
+
+### Why are headphones recommended?
+
+Headphones reduce speaker echo entering the microphone, making recognition and translation more stable and clear.
+
+### How do one-click presets work?
+
+RealTTS lets you save your go-to settings as presets. Store your preferred language pair, voice, speed, and more, then switch scenarios instantly with one click — no need to reconfigure every time.
+
+### Will the translation still sound like me?
+
+Yes. With a custom voice profile, translated speech keeps your familiar tone and personality instead of sounding like a generic machine voice.
+
+### Is there any delay that disrupts the conversation?
+
+Response time is in seconds and two-way translation is almost simultaneous, so the conversation flows naturally and your client never feels they are waiting for a translation.
+
+### What scenarios is RealTTS for?
+
+It fits every stage of cross-border business: real-time chats on WeChat, WhatsApp and LINE, video meetings on Zoom, Teams and Skype, face-to-face talks, trade-show booth reception, and on-the-go mobile interpretation — from client negotiation and quoting to customer service.
+
+### How is RealTTS priced?
+
+Monthly, quarterly and annual plans are available; quarterly and annual billing offer better value for long-term use.
+
+## Commercial terms
+
+- Disclaimer: Due to the nature of virtual products, purchases of the full version are non-refundable for any reason.
+
+## Contact
+
+- [Sales email](mailto:hrym7499@agent.qq.com): Pre-purchase consultation, free trial and licensing. Serving customers worldwide.
+- Scan with WeChat: Mention “RealTTS” for faster assistance
+
+## Official links
+
+- [Homepage](https://www.realtts.live/en/): Two-way live voice translation for WeChat, WhatsApp, LINE, Zoom and more. No app for your clients to install. From $20 per month, free trial.
+
+## Localized versions
+
+- [简体中文](https://www.realtts.live/zh-CN/llms.txt): RealTTS 实时同声传译｜跨境双向实时语音翻译软件
+- [繁體中文](https://www.realtts.live/zh-TW/llms.txt): RealTTS 即時同步口譯｜跨境雙向即時語音翻譯軟體
+- [日本語](https://www.realtts.live/ja/llms.txt): RealTTS リアルタイム同時通訳｜双方向ライブ音声翻訳
+- [한국어](https://www.realtts.live/ko/llms.txt): RealTTS 실시간 동시통역 | 양방향 라이브 음성 번역
+- [Русский](https://www.realtts.live/ru/llms.txt): RealTTS — синхронный перевод в реальном времени | Двусторонний голосовой перевод
+- [Español](https://www.realtts.live/es/llms.txt): RealTTS — interpretación simultánea en tiempo real | Traducción de voz bidireccional
+- [Português](https://www.realtts.live/pt/llms.txt): RealTTS — interpretação simultânea em tempo real | Tradução de voz bidirecional
+- [العربية](https://www.realtts.live/ar/llms.txt): RealTTS — ترجمة فورية متزامنة | ترجمة صوتية ثنائية الاتجاه
+
+## Optional
+
+- [Sitemap](https://www.realtts.live/sitemap.xml): All 9 language versions with hreflang alternates.
+- Copyright © 2026 RealTTS. All rights reserved.

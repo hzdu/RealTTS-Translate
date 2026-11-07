@@ -1,0 +1,62 @@
+# RealTTS
+
+> O RealTTS é um software de interpretação simultânea bidirecional que traduz voz em tempo real no WeChat, WhatsApp, LINE, Zoom, Telegram e outros. Seus clientes não instalam nada. Não perca mais pedidos por causa do idioma.
+
+Reconhecimento, tradução e voz natural bidirecionais em tempo real.
+
+O RealTTS funciona por meio de um dispositivo de áudio virtual. Se o seu app de chat ou chamadas permitir escolher microfone ou alto-falante — WeChat, WhatsApp, LINE, Zoom, Teams, Skype e outros — a tradução bidirecional em tempo real funciona na hora, sem instalar nada do lado do cliente.
+
+A resposta é em segundos e a tradução bidirecional termina quase simultaneamente, mantendo a conversa natural — o cliente nunca sente que está esperando uma tradução.
+
+## Idiomas compatíveis
+
+- Traduz 13 idiomas de negócios, cobrindo os principais mercados do comércio global, com mais a caminho.
+- Interface disponível em 9 idiomas: 简体中文, 繁體中文, English, 日本語, 한국어, Русский, Español, Português, العربية.
+
+## Plataformas e compatibilidade
+
+- Funciona em Windows 10+, macOS e também no celular para conversas bidirecionais ao vivo em qualquer lugar.
+- WeChat · WhatsApp · LINE · Zoom · Teams · Skype — se permite escolher dispositivos de áudio, funciona perfeitamente.
+
+## Preços
+
+Pagamento mensal por dispositivo, atualize quando quiser. Inclui tradução ao vivo, exportação e suporte.
+
+- **Mensal**: $20 / mês / dispositivo
+- **Trimestral**: $57 / trimestre / dispositivo
+- **Anual**: $230 / ano / dispositivo
+- Cada plano base inclui apenas 1 sala de reunião multiusuário. Se vários vendedores precisarem de salas separadas ao mesmo tempo, avise na compra: cada sala extra custa $5 / mês / sala.
+
+## Experimente o RealTTS grátis
+
+- Experimente a tradução de voz bidirecional em tempo real sem custo. Adicione-nos no WeChat para resgatar seu teste gratuito. Compatível com WeChat, WhatsApp e LINE.
+- Sem cartão de crédito · Orientação de configuração 1 a 1
+
+## Condições de compra
+
+- Aviso legal: devido à natureza de produtos virtuais, a compra da versão completa não aceita reembolso por nenhum motivo.
+
+## Contato
+
+- [E-mail de vendas](mailto:hrym7499@agent.qq.com): Consultoria pré-compra, teste gratuito e licenciamento. Atendemos clientes no mundo todo.
+- Escaneie no WeChat: Mencione “RealTTS”
+
+## Links oficiais
+
+- [Página inicial](https://www.realtts.live/pt/): Tradução de voz bidirecional em tempo real para WeChat, WhatsApp, LINE, Zoom e mais. Sem instalação para seus clientes. A partir de US$ 20 por mês, com teste gratuito.
+- [Descrição completa do produto (Markdown)](https://www.realtts.live/pt/llms-full.txt): Recursos, fluxo de uso, preços, cenários, condições de compra e FAQ completo em texto simples.
+
+## Versões por idioma
+
+- [简体中文](https://www.realtts.live/zh-CN/llms.txt): RealTTS 实时同声传译｜跨境双向实时语音翻译软件
+- [繁體中文](https://www.realtts.live/zh-TW/llms.txt): RealTTS 即時同步口譯｜跨境雙向即時語音翻譯軟體
+- [English](https://www.realtts.live/en/llms.txt): RealTTS Real-Time Interpretation | Two-Way Live Voice Translation
+- [日本語](https://www.realtts.live/ja/llms.txt): RealTTS リアルタイム同時通訳｜双方向ライブ音声翻訳
+- [한국어](https://www.realtts.live/ko/llms.txt): RealTTS 실시간 동시통역 | 양방향 라이브 음성 번역
+- [Русский](https://www.realtts.live/ru/llms.txt): RealTTS — синхронный перевод в реальном времени | Двусторонний голосовой перевод
+- [Español](https://www.realtts.live/es/llms.txt): RealTTS — interpretación simultánea en tiempo real | Traducción de voz bidireccional
+- [العربية](https://www.realtts.live/ar/llms.txt): RealTTS — ترجمة فورية متزامنة | ترجمة صوتية ثنائية الاتجاه
+
+## Optional
+
+- [Mapa do site](https://www.realtts.live/sitemap.xml): As 9 versões de idioma com alternativas hreflang.

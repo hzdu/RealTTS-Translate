@@ -3,6 +3,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { parseHTML } from 'linkedom';
+import { writeLlmsFiles, llmsLinkTags } from './llms.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'index.html');
@@ -225,6 +226,17 @@ function localizeHead(doc, code) {
     cursor = link;
   }
 
+  // zh-CN 的输出会写回源文件，所以先清掉上一轮注入的 llms 声明再重新插入，避免重复累积。
+  for (const el of [...doc.querySelectorAll('link[rel="alternate"][type]')]) {
+    if ((el.getAttribute('href') || '').includes('llms')) el.remove();
+  }
+  for (const attrs of llmsLinkTags(code, BASE)) {
+    const link = doc.createElement('link');
+    for (const [k, v] of Object.entries(attrs)) link.setAttribute(k, v);
+    cursor.parentNode.insertBefore(link, cursor.nextSibling);
+    cursor = link;
+  }
+
   ensureMeta(doc, { property: 'og:title' }, seo.title);
   ensureMeta(doc, { property: 'og:description' }, seo.short);
   ensureMeta(doc, { property: 'og:url' }, pageUrl);
@@ -345,8 +357,11 @@ for (const { code, pack } of packs) {
 
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(), 'utf8');
 
+const llmsFiles = writeLlmsFiles({ root: ROOT, base: BASE, langs: LANGS, packs, seo: SEO, source, urlFor });
+
 for (const r of report) {
   console.log(`${r.code.padEnd(6)} translated=${String(r.translated).padStart(3)} missing=${r.missing.length}` +
     (r.missing.length ? ` -> ${r.missing.slice(0, 8).join(',')}${r.missing.length > 8 ? '…' : ''}` : ''));
 }
 console.log(`sitemap.xml written with ${LANGS.length} URLs`);
+console.log(`llms.txt written: ${llmsFiles.length} files (root + ${LANGS.length} locales, each with llms-full.txt)`);

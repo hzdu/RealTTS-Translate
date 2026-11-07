@@ -5,5 +5,5 @@
 .workbuddy
 .dsh-edit-review.json
 .dsh-edit-review-archive.json
-build/
+build/node_modules/
 node_modules/
