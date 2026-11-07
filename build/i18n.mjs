@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { parseHTML } from 'linkedom';
 import { writeLlmsFiles, llmsLinkTags } from './llms.mjs';
@@ -101,9 +100,32 @@ const SEO = {
 
 const urlFor = code => BASE + (code === 'zh-CN' ? '/' : `/${code}/`);
 
-function extractObjectLiteral(src, name) {
+const DATA_FILE = path.join(ROOT, 'build', 'i18n-data.json');
+
+// 翻译数据源独立于 index.html，这样首页也能只下发本语言词典，不必为了保住数据而背着 9 种语言。
+function loadDicts() {
+  const dicts = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+  for (const name of ['languages', ...DICTS]) {
+    if (!dicts[name]) throw new Error(`i18n-data.json missing dictionary: ${name}`);
+    for (const code of LANGS) {
+      if (!dicts[name][code]) throw new Error(`i18n-data.json missing ${name}.${code}`);
+    }
+  }
+  return dicts;
+}
+
+function loadPacks(dicts) {
+  return LANGS.map(code => {
+    const pack = { ...dicts.languages[code] };
+    for (const name of DICTS) Object.assign(pack, dicts[name][code]);
+    return { code, pack };
+  });
+}
+
+// 定位 `const NAME = {...}` 的字面量边界，正确处理引号、转义与注释。
+function findLiteralRange(src, name) {
   const m = new RegExp(`const\\s+${name}\\s*=\\s*`).exec(src);
-  if (!m) throw new Error(`dictionary not found: ${name}`);
+  if (!m) return null;
   const start = src.indexOf('{', m.index + m[0].length);
   let depth = 0, quote = null, line = false, block = false;
   for (let i = start; i < src.length; i++) {
@@ -115,22 +137,9 @@ function extractObjectLiteral(src, name) {
     if (c === '/' && n === '*') { block = true; i++; continue; }
     if (c === '"' || c === "'" || c === '`') { quote = c; continue; }
     if (c === '{') depth++;
-    else if (c === '}') { depth--; if (depth === 0) return src.slice(start, i + 1); }
+    else if (c === '}') { depth--; if (depth === 0) return { start, end: i + 1 }; }
   }
   throw new Error(`unterminated dictionary: ${name}`);
-}
-
-function loadPacks(src) {
-  const context = vm.createContext({});
-  const dicts = {};
-  for (const name of ['languages', ...DICTS]) {
-    dicts[name] = vm.runInContext(`(${extractObjectLiteral(src, name)})`, context);
-  }
-  return LANGS.map(code => {
-    const pack = { ...dicts.languages[code] };
-    for (const name of DICTS) Object.assign(pack, dicts[name][code] || dicts[name].en || {});
-    return { code, pack };
-  });
 }
 
 function ensureMeta(doc, attrs, content) {
@@ -154,44 +163,26 @@ function absolutizeRelativeUrls(doc) {
   }
 }
 
-// 把页面内嵌 JS 词典裁剪到只剩当前语言：languages 保留 9 项（其余语言仅 label/dir 供语言菜单与评价标签用），
-// 10 个文案词典仅保留 { code: {...} } 一项。页面加载后 setLanguage 只会收到当前页语言，其余为死数据。
-// 每页可省约 190KB。源 index.html 保留全量词典（i18n.mjs 的翻译数据源）。
-function pruneDictionaries(html, code) {
-  const dicts = loadPacks(html); // 仅用于解析对象边界
+// 把页面内嵌 JS 词典替换为只含当前语言的版本：languages 保留 9 项（其余语言仅 label/dir
+// 供语言菜单用），10 个文案词典仅保留 { code: {...} } 一项。
+// 运行时 setLanguage 只会收到 data-page-lang，切其他语言走 location.href 跳转，
+// 所以其余 8 种语言对访客是死数据，不该下发。
+function injectDictionaries(html, code, dicts) {
   let out = html;
   for (const name of ['languages', ...DICTS]) {
-    const m = new RegExp(`const\\s+${name}\\s*=\\s*`).exec(out);
-    if (!m) continue;
-    const start = out.indexOf('{', m.index + m[0].length);
-    let depth = 0, quote = null, line = false, block = false;
-    let i = start;
-    for (; i < out.length; i++) {
-      const c = out[i], n = out[i + 1];
-      if (line) { if (c === '\n') line = false; continue; }
-      if (block) { if (c === '*' && n === '/') { block = false; i++; } continue; }
-      if (quote) { if (c === '\\') { i++; continue; } if (c === quote) quote = null; continue; }
-      if (c === '/' && n === '/') { line = true; i++; continue; }
-      if (c === '/' && n === '*') { block = true; i++; continue; }
-      if (c === '"' || c === "'" || c === '`') { quote = c; continue; }
-      if (c === '{') depth++;
-      else if (c === '}') { depth--; if (depth === 0) { i++; break; } }
-    }
-    const literal = out.slice(start, i);
-    let parsed;
-    try { parsed = vm.runInNewContext(`(${literal})`); } catch { continue; }
-
+    const range = findLiteralRange(out, name);
+    if (!range) throw new Error(`dictionary declaration not found in template: ${name}`);
     let replacement;
     if (name === 'languages') {
       const slim = {};
-      for (const [lang, pack] of Object.entries(parsed)) {
+      for (const [lang, pack] of Object.entries(dicts.languages)) {
         slim[lang] = lang === code ? pack : { label: pack.label, dir: pack.dir };
       }
       replacement = JSON.stringify(slim);
     } else {
-      replacement = JSON.stringify({ [code]: parsed[code] || parsed.en || {} });
+      replacement = JSON.stringify({ [code]: dicts[name][code] });
     }
-    out = out.slice(0, start) + replacement + out.slice(i);
+    out = out.slice(0, range.start) + replacement + out.slice(range.end);
   }
   return out;
 }
@@ -308,8 +299,9 @@ function buildSitemap() {
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`;
 }
 
+const dicts = loadDicts();
 const source = fs.readFileSync(SRC, 'utf8');
-const packs = loadPacks(source);
+const packs = loadPacks(dicts);
 const report = [];
 
 for (const { code, pack } of packs) {
@@ -344,10 +336,9 @@ for (const { code, pack } of packs) {
 
   let html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML + '\n';
   if (code !== 'zh-CN') html = rewriteCssAssetPaths(html);
-  // 关键：zh-CN 输出路径 = 源文件路径（ROOT/index.html）。若对 zh-CN 也 prune，
-  // 会把裁剪后的词典写回源文件，导致下次构建丢失 8 种语言翻译数据。
-  // 因此 zh-CN 输出保留全量词典；只有子目录页面做 prune。
-  if (code !== 'zh-CN') html = pruneDictionaries(html, code);
+  // zh-CN 的输出路径就是模板路径（ROOT/index.html），但全量翻译数据已存于
+  // build/i18n-data.json，写回精简版不会丢数据，因此首页和其他语言页一样精简。
+  html = injectDictionaries(html, code, dicts);
 
   const outDir = code === 'zh-CN' ? ROOT : path.join(ROOT, code);
   fs.mkdirSync(outDir, { recursive: true });
