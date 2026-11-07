@@ -1318,21 +1318,21 @@
         <div class="stats-panel reveal mt-16 grid gap-4 pt-14 md:grid-cols-3">
           <article class="stats-card p-7 pb-16 md:p-8 md:pb-16">
             <div class="flex items-center justify-between"><span class="stats-icon"><i class="fa-solid fa-bolt text-[18px]"></i></span><span class="text-[10px] font-semibold tracking-[.14em] text-black/30">LATENCY</span></div>
-            <div class="counter stats-number display mt-8 font-semibold" data-count="1">0</div>
+            <div class="counter stats-number display mt-8 font-semibold" data-count="1">1</div>
             <p class="stats-label mt-3 text-[17px] font-semibold" data-realtts-i18n="statSpeed">second response</p>
             <p class="stats-body mt-3 text-[15px] leading-relaxed" data-realtts-i18n="statSpeedBody">Keeps conversations moving naturally.</p>
             <span class="stats-status">Signal response</span><span class="stats-meter" aria-hidden="true"><span></span></span>
           </article>
           <article class="stats-card p-7 pb-16 md:p-8 md:pb-16">
             <div class="flex items-center justify-between"><span class="stats-icon"><i class="fa-solid fa-language text-[18px]"></i></span><span class="text-[10px] font-semibold tracking-[.14em] text-black/30">LANGUAGE</span></div>
-            <div class="counter stats-number display mt-8 font-semibold" data-count="13">0</div>
+            <div class="counter stats-number display mt-8 font-semibold" data-count="13">13</div>
             <p class="stats-label mt-3 text-[17px] font-semibold" data-realtts-i18n="statLang">business languages</p>
             <p class="stats-body mt-3 text-[15px] leading-relaxed" data-realtts-i18n="statLangBody">Built for major global trade markets.</p>
             <span class="stats-status">Global coverage</span><span class="stats-meter" aria-hidden="true"><span></span></span>
           </article>
           <article class="stats-card p-7 pb-16 md:p-8 md:pb-16">
             <div class="flex items-center justify-between"><span class="stats-icon"><i class="fa-solid fa-arrows-left-right-to-line text-[18px]"></i></span><span class="text-[10px] font-semibold tracking-[.14em] text-black/30">DUPLEX</span></div>
-            <div class="counter stats-number display mt-8 font-semibold" data-count="2">0</div>
+            <div class="counter stats-number display mt-8 font-semibold" data-count="2">2</div>
             <p class="stats-label mt-3 text-[17px] font-semibold" data-realtts-i18n="statWay">way interpretation</p>
             <p class="stats-body mt-3 text-[15px] leading-relaxed" data-realtts-i18n="statWayBody">Both sides understand each other.</p>
             <span class="stats-status">Two-way audio</span><span class="stats-meter" aria-hidden="true"><span></span></span>
@@ -1517,11 +1517,11 @@
         </div>
         <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div class="trust-stat reveal p-7">
-            <div class="trust-stat-number"><span class="counter" data-count="42000">0</span><span class="trust-stat-accent">+</span></div>
+            <div class="trust-stat-number"><span class="counter" data-count="42000">42000</span><span class="trust-stat-accent">+</span></div>
             <p class="trust-stat-label mt-3 text-[15px] font-semibold" data-realtts-i18n="trustUsers">Users served</p>
           </div>
           <div class="trust-stat reveal p-7">
-            <div class="trust-stat-number"><span class="counter" data-count="96">0</span></div>
+            <div class="trust-stat-number"><span class="counter" data-count="96">96</span></div>
             <p class="trust-stat-label mt-3 text-[15px] font-semibold" data-realtts-i18n="trustCountries">Countries &amp; regions</p>
           </div>
           <div class="trust-stat reveal p-7">
@@ -1529,14 +1529,29 @@
             <p class="trust-stat-label mt-3 text-[15px] font-semibold" data-realtts-i18n="trustRating">Average user rating</p>
           </div>
           <div class="trust-stat reveal p-7">
-            <div class="trust-stat-number"><span class="counter" data-count="1800">0</span><span class="trust-stat-accent">万+</span></div>
+            <div class="trust-stat-number" data-realtts-i18n="trustMinutesValue" data-i18n-static=""><span class="counter" data-count="18">18</span><span class="trust-stat-accent">M+</span></div>
             <p class="trust-stat-label mt-3 text-[15px] font-semibold" data-realtts-i18n="trustMinutes">Minutes translated</p>
           </div>
         </div>
         <div class="mt-16">
-          <p class="mb-6 text-center text-[14px] font-semibold text-black/45" data-realtts-i18n="trustLogos">Working alongside leading global commerce, logistics and payment platforms</p>
-          <div class="logo-marquee" aria-label="合作公司">
-            <div class="logo-track" id="logoTrack"></div>
+          <p id="trustLogosLabel" class="mb-6 text-center text-[14px] font-semibold text-black/45" data-realtts-i18n="trustLogos">Working alongside leading global commerce, logistics and payment platforms</p>
+          <div class="logo-marquee" role="group" aria-labelledby="trustLogosLabel">
+            <div class="logo-track" id="logoTrack">
+              <div class="logo-set flex gap-4 pr-4" role="list">
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-amazon" aria-hidden="true"></i><span>Amazon</span></div>
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-shopify" aria-hidden="true"></i><span>Shopify</span></div>
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-ebay" aria-hidden="true"></i><span>eBay</span></div>
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-paypal" aria-hidden="true"></i><span>PayPal</span></div>
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-stripe" aria-hidden="true"></i><span>Stripe</span></div>
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-microsoft" aria-hidden="true"></i><span>Microsoft</span></div>
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-apple" aria-hidden="true"></i><span>Apple</span></div>
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-google" aria-hidden="true"></i><span>Google</span></div>
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-wordpress" aria-hidden="true"></i><span>WordPress</span></div>
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-slack" aria-hidden="true"></i><span>Slack</span></div>
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-linkedin" aria-hidden="true"></i><span>LinkedIn</span></div>
+                <div class="logo-pill" role="listitem"><i class="fa-brands fa-github" aria-hidden="true"></i><span>GitHub</span></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1764,7 +1779,7 @@
 
     const trialTranslations={"en":{"trialBadge":"Limited-time offer","trialTitle":"Try RealTTS for Free","trialBody":"Experience real-time two-way voice translation at no cost. Add us on WeChat to claim your free trial — works with WeChat, WhatsApp and LINE.","trialCta":"Claim Free Trial","trialNote":"No credit card required · 1-on-1 setup guidance"}};
 
-    const trustTranslations={"en":{"trustEyebrow":"Trusted by cross-border teams worldwide.","trustTitle":"Trusted because it actually closes deals.","trustUsers":"Users served","trustCountries":"Countries & regions","trustRating":"Average user rating","trustMinutes":"Minutes translated","trustLogos":"Working alongside leading global commerce, logistics and payment platforms","contractEyebrow":"Deals are never just a verbal promise.","contractTitle":"RealTTS is their<br>best friend in cross-border trade.","contractDisclaimer":"All sample contracts are published on the RealTTS website with the consent of the users. Unauthorized use by third parties is prohibited.","contractBody":"From first trial orders to annual framework agreements, every partnership is sealed in writing. Sample contracts below show buyer, seller, deal value and signing date.","contractTag1":"Annual framework","contractTag2":"First order","contractTag3":"Bulk purchase","contractPartyBuyer":"Buyer","contractPartySeller":"Supplier","contractAmountLabel":"Deal value","contractSignedLabel":"Signed","contractShipLabel":"Shipping","contractShip1":"Sea freight · FOB Shanghai","contractShip2":"International express · DDP Moscow","contractShip3":"Air freight · CIF Guangzhou","contractNote":"Sample contracts shown · to illustrate that every deal carries written proof"}};
+    const trustTranslations={"en":{"trustEyebrow":"Trusted by cross-border teams worldwide.","trustTitle":"Trusted because it actually closes deals.","trustUsers":"Users served","trustCountries":"Countries & regions","trustRating":"Average user rating","trustMinutes":"Minutes translated","trustMinutesValue":"<span class=\"counter\" data-count=\"18\">18</span><span class=\"trust-stat-accent\">M+</span>","trustLogos":"Working alongside leading global commerce, logistics and payment platforms","contractEyebrow":"Deals are never just a verbal promise.","contractTitle":"RealTTS is their<br>best friend in cross-border trade.","contractDisclaimer":"All sample contracts are published on the RealTTS website with the consent of the users. Unauthorized use by third parties is prohibited.","contractBody":"From first trial orders to annual framework agreements, every partnership is sealed in writing. Sample contracts below show buyer, seller, deal value and signing date.","contractTag1":"Annual framework","contractTag2":"First order","contractTag3":"Bulk purchase","contractPartyBuyer":"Buyer","contractPartySeller":"Supplier","contractAmountLabel":"Deal value","contractSignedLabel":"Signed","contractShipLabel":"Shipping","contractShip1":"Sea freight · FOB Shanghai","contractShip2":"International express · DDP Moscow","contractShip3":"Air freight · CIF Guangzhou","contractNote":"Sample contracts shown · to illustrate that every deal carries written proof"}};
 
     const reviewTranslations={"en":{"reviewsEyebrow":"Real feedback from users around the world.","reviewsTitle":"With RealTTS, they turned<br>language into orders.","showMoreReviews":"Show more reviews","reviewsAllShown":"All 120 reviews shown"}};
 
@@ -1861,7 +1876,9 @@
       const pack=languages[selectedCode];
       Object.assign(pack,salesTranslations[selectedCode]||salesTranslations['en'],barrierTranslations[selectedCode]||barrierTranslations['en'],videoTranslations[selectedCode]||videoTranslations['en'],purchaseTranslations[selectedCode]||purchaseTranslations['en'],trialTranslations[selectedCode]||trialTranslations['en'],trustTranslations[selectedCode]||trustTranslations['en'],reviewTranslations[selectedCode]||reviewTranslations['en'],noappTranslations[selectedCode]||noappTranslations['en'],pricingTranslations[selectedCode]||pricingTranslations['en'],contractContentTranslations[selectedCode]||contractContentTranslations['en']);
       document.documentElement.lang=selectedCode; document.documentElement.dir=pack.dir; langLabel.textContent=pack.label;
-      document.querySelectorAll('[data-realtts-i18n]').forEach(el=>{ const k=el.dataset.realttsI18n; const value=pack[k]; if(typeof value==='string' && value.trim() && value!==k) el.innerHTML=value; });
+      // data-i18n-static：含计数器的节点只在构建时套用译文，运行时不再重刷 innerHTML，
+      // 否则新节点拿不到 IntersectionObserver，数字就不会动。
+      document.querySelectorAll('[data-realtts-i18n]').forEach(el=>{ if(el.hasAttribute('data-i18n-static'))return; const k=el.dataset.realttsI18n; const value=pack[k]; if(typeof value==='string' && value.trim() && value!==k) el.innerHTML=value; });
       applyPricingCurrency(selectedCode);
       renderSceneMarquee(pack);
       renderContracts(pack);
@@ -2430,29 +2447,11 @@
       load();
     })();
 
-    // Partner logos marquee
-    const partnerLogos=[
-      {icon:'fa-amazon',name:'Amazon'},{icon:'fa-shopify',name:'Shopify'},{icon:'fa-ebay',name:'eBay'},
-      {icon:'fa-paypal',name:'PayPal'},{icon:'fa-stripe',name:'Stripe'},{icon:'fa-microsoft',name:'Microsoft'},
-      {icon:'fa-apple',name:'Apple'},{icon:'fa-google',name:'Google'},{icon:'fa-wordpress',name:'WordPress'},
-      {icon:'fa-slack',name:'Slack'},{icon:'fa-linkedin',name:'LinkedIn'},{icon:'fa-github',name:'GitHub'}
-    ];
+    // Partner logos marquee：首组品牌已写在 HTML 里（不执行 JS 也能被读到），
+    // 这里只复制一份接上，形成 -50% 位移的无缝滚动。
     const logoTrack=document.getElementById('logoTrack');
-    if(logoTrack){
-      const buildLogoSet=()=>{
-        const set=document.createElement('div');
-        set.className='flex gap-4 pr-4';
-        partnerLogos.forEach(item=>{
-          const pill=document.createElement('div');
-          pill.className='logo-pill';
-          pill.innerHTML=`<i class="fa-brands ${item.icon}"></i><span>${item.name}</span>`;
-          set.appendChild(pill);
-        });
-        return set;
-      };
-      logoTrack.appendChild(buildLogoSet());
-      logoTrack.appendChild(buildLogoSet());
-    }
+    const logoSet=logoTrack&&logoTrack.firstElementChild;
+    if(logoSet) logoTrack.appendChild(logoSet.cloneNode(true));
 
     // Multilingual customer reviews
     const reviews=[
